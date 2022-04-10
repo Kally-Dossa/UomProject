@@ -30,7 +30,7 @@ public class User extends JFrame {
 		userFieldAge = new JTextField("Please enter your  age ");
 		panel.add(userFieldAge);
 		
-		//Age
+		//Sex
 		userFieldSex = new JTextField("Please enter your  sex ");
 		panel.add(userFieldSex);	
 		
