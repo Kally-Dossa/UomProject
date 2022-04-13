@@ -37,7 +37,6 @@ public class UserGUI extends JFrame {
 		//Pet
 		userFieldPet = new JTextField("Do you have pet? ");
 		panel.add(userFieldPet);	
-	
 		
 		//Smoker
 		userFieldSmoke = new JTextField("Do you smoke? ");
@@ -61,7 +60,7 @@ public class UserGUI extends JFrame {
 			
 		
 		
-		//Δημιουργια πρωτου πληκτρου
+		//Δημιουργια πρωτου πληκτρων
 		button1 = new JButton(" Add me ");
 		panel.add(button1);
 		
@@ -105,6 +104,4 @@ public class UserGUI extends JFrame {
 				//θα πηγαινει στο παραθυρο για τα στοιχεια του σπιτιου
 			}
 		}	
-	
-
 }
