@@ -12,7 +12,9 @@ public class UserGUI extends JFrame {
 	
 	private JPanel panel;
 	private JButton button1, button2;
-	private JTextField userFieldName, userFieldLastName, userFieldAge, userFieldSex, userFieldPet, userFieldSmoke;
+	private JTextField userFieldName, userFieldLastName, userFieldAge, userFieldSex, 
+						userFieldPet, userFieldSmoke, userFieldEmail, userFieldPhoneNum,
+						userFieldLanguage, userFieldProfessionalStatus;
 	
 	public UserGUI() {
 		
@@ -42,7 +44,24 @@ public class UserGUI extends JFrame {
 		//Smoker
 		userFieldSmoke = new JTextField("Do you smoke? ");
 		panel.add(userFieldSmoke);	
+		
+		//email
+		userFieldEmail = new JTextField("Please enter your email ");
+		panel.add(userFieldEmail);	
+		
+		//PhomeNumber
+		userFieldPhoneNum = new JTextField("Please enter your phone number ");
+		panel.add(userFieldPhoneNum);	
+		
+		//Language
+		userFieldLanguage = new JTextField("Please enter your language ");
+		panel.add(userFieldLanguage);	
+
+		//ProfStatus
+		userFieldProfessionalStatus = new JTextField("Please enter your professional status ");
+		panel.add(userFieldProfessionalStatus);
 			
+		
 		
 		//Δημιουργια πρωτου πληκτρου
 		button1 = new JButton("Add me");
@@ -51,8 +70,8 @@ public class UserGUI extends JFrame {
 		this.setContentPane(panel);	
 		
 		//τι να κανει οταν παταω αδδ
-		ButtonListener find= new ButtonListener();
-		button1.addActionListener(find);
+		ButtonListener add= new ButtonListener();
+		button1.addActionListener(add);
 		
 			
 		this.setVisible(true);

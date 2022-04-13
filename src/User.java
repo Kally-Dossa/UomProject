@@ -2,11 +2,12 @@
 public abstract class User {
 	
 	private String name, lastName, sex, email, phoneNum, language, professionalStatus;
+	private int age;
 	private boolean pet, smoker;
 	//να μπορουν να βαλουν και προσωπικη φωτογραφια 
 	
 	
-	public User(String aName, String aLastName, String aSex, String anEmail, String aPhoneNum, String aLanguage, String aProfessionalStatus, boolean aPet,
+	public User(String aName, String aLastName, String aSex, String anEmail, String aPhoneNum, String aLanguage, String aProfessionalStatus, int anAge, boolean aPet,
 			boolean aSmoker) {
 		super();
 		this.name = aName;
@@ -16,6 +17,7 @@ public abstract class User {
 		this.phoneNum = aPhoneNum;
 		this.language = aLanguage;
 		this.professionalStatus = aProfessionalStatus;
+		this.age = anAge;
 		this.pet = aPet;
 		this.smoker = aSmoker;
 
