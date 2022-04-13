@@ -2,12 +2,12 @@
 public abstract class User {
 	
 	private String name, lastName, sex, email, phoneNum, language, professionalStatus;
-	private boolean pet, smoker, HaveHome, noHome;
+	private boolean pet, smoker;
 	//να μπορουν να βαλουν και προσωπικη φωτογραφια 
 	
 	
 	public User(String aName, String aLastName, String aSex, String anEmail, String aPhoneNum, String aLanguage, String aProfessionalStatus, boolean aPet,
-			boolean aSmoker, boolean aHaveHome) {
+			boolean aSmoker) {
 		super();
 		this.name = aName;
 		this.lastName = aLastName;
@@ -18,23 +18,9 @@ public abstract class User {
 		this.professionalStatus = aProfessionalStatus;
 		this.pet = aPet;
 		this.smoker = aSmoker;
-		this.HaveHome = aHaveHome;
+
 	}
 	
-	public User(String aName, String aLastName, String aSex, String anEmail, String aPhoneNum, String aLanguage, String aProfessionalStatus, boolean aPet,
-			boolean aSmoker, boolean aNoHome) {
-		super();
-		this.name = aName;
-		this.lastName = aLastName;
-		this.sex = aSex;
-		this.email = anEmail;
-		this.phoneNum = aPhoneNum;
-		this.language = aLanguage;
-		this.professionalStatus = aProfessionalStatus;
-		this.pet = aPet;
-		this.smoker = aSmoker;
-		this.noHome = aNoHome;
-	}
 
 
 	public String getName() {
@@ -79,10 +65,6 @@ public abstract class User {
 
 	public boolean isSmoker() {
 		return smoker;
-	}
-	
-	public boolean haveHome() {
-		return HaveHome;
 	}
 	
 	
