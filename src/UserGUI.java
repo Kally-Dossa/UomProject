@@ -1,10 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -64,14 +62,21 @@ public class UserGUI extends JFrame {
 		
 		
 		//Δημιουργια πρωτου πληκτρου
-		button1 = new JButton("Add me");
+		button1 = new JButton(" Add me ");
 		panel.add(button1);
+		
+		button2 = new JButton(" I have home ");
+		panel.add(button2);
+
 		
 		this.setContentPane(panel);	
 		
 		//τι να κανει οταν παταω αδδ
 		ButtonListener add= new ButtonListener();
 		button1.addActionListener(add);
+		
+		OtherButtonListener haveHome= new OtherButtonListener();
+		button1.addActionListener(haveHome);
 		
 			
 		this.setVisible(true);
@@ -86,11 +91,20 @@ public class UserGUI extends JFrame {
 		class ButtonListener implements ActionListener {
 
 			public void actionPerformed(ActionEvent e) {
+				
+				//θα τον βαζει στο αρχειο μας
 			
 			}
 		}
 		
-		
+		class OtherButtonListener implements ActionListener {
+
+			public void actionPerformed(ActionEvent e) {
+			
+				dispose();
+				//θα πηγαινει στο παραθυρο για τα στοιχεια του σπιτιου
+			}
+		}	
 	
 
 }
