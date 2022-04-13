@@ -1,16 +1,18 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 public class SignUpGUI extends JFrame {
 	
 	private JPanel panel;
 	private JButton button1;
-	private JTextField usernameField, passField;
+	private JTextField usernameField, passwordField;
 	
 	public SignUpGUI() {
 		
@@ -20,8 +22,10 @@ public class SignUpGUI extends JFrame {
 		usernameField = new JTextField("Please enter your username  ");
 		panel.add(usernameField);
 		
-		passField = new JTextField("Please enter your password ");
-		panel.add(passField);
+		passwordField = new JTextField("Please enter your password ");
+		passwordField = new JPasswordField(10);
+		passwordField.setActionCommand(OK);
+		passwordField.addActionListener(this);
 		
 		button1 = new JButton("Sign Up");
 		panel.add(button1);
