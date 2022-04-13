@@ -43,7 +43,7 @@ public class SignUpGUI extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new User();
+				new UserGUI();
 			}
 		}	
 	
