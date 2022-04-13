@@ -1,29 +1,31 @@
+import java.util.ArrayList;
 
 public abstract class User {
 	
-	private String name, lastName, sex, email, phoneNum, language, professionalStatus;
-	private int age;
-	private boolean pet, smoker;
+	protected String name, lastName, sex, email, phoneNum, language, professionalStatus;
+	protected int age;
+	protected boolean pet, smoker;
+	protected ArrayList<User> suggestRoomatesList = new ArrayList<User>();
 	//να μπορουν να βαλουν και προσωπικη φωτογραφια 
 	
 	
 	public User(String aName, String aLastName, String aSex, String anEmail, String aPhoneNum, String aLanguage, String aProfessionalStatus, int anAge, boolean aPet,
 			boolean aSmoker) {
 		super();
-		this.name = aName;
-		this.lastName = aLastName;
-		this.sex = aSex;
-		this.email = anEmail;
-		this.phoneNum = aPhoneNum;
-		this.language = aLanguage;
-		this.professionalStatus = aProfessionalStatus;
-		this.age = anAge;
-		this.pet = aPet;
-		this.smoker = aSmoker;
+		name = aName;
+		lastName = aLastName;
+		sex = aSex;
+		email = anEmail;
+		phoneNum = aPhoneNum;
+		language = aLanguage;
+		professionalStatus = aProfessionalStatus;
+		age = anAge;
+		pet = aPet;
+		smoker = aSmoker;
 
 	}
 	
-
+	public abstract User getUser();
 
 	public String getName() {
 		return name;
