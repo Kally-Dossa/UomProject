@@ -212,7 +212,7 @@ public class SignUpGUI extends JFrame {
 					FileOutputStream fouts = new FileOutputStream(f);
 					ObjectOutputStream douts = new ObjectOutputStream(fouts);
 					douts.writeObject(aUser);
-
+					douts.close();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
