@@ -1,16 +1,17 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class User {
+public abstract class User implements Serializable{
 	
-	protected String name, lastName, sex, email, phoneNum, language, professionalStatus;
+	protected String name, lastName, sex, email, phoneNum, language;
 	protected int age;
-	protected boolean pet, smoker;
+	protected boolean pet, smoker, professionalStatus;
 	protected ArrayList<User> suggestRoomatesList = new ArrayList<User>();
 	//να μπορουν να βαλουν και προσωπικη φωτογραφια 
 	
 	
-	public User(String aName, String aLastName, String aSex, String anEmail, String aPhoneNum, String aLanguage, String aProfessionalStatus, int anAge, boolean aPet,
-			boolean aSmoker) {
+	public User(String aName, String aLastName, String aSex,int anAge, String anEmail, String aPhoneNum, String aLanguage,  boolean aPet,
+			boolean aSmoker, boolean aProfessionalStatus) {
 		super();
 		name = aName;
 		lastName = aLastName;
@@ -57,7 +58,7 @@ public abstract class User {
 	}
 
 
-	public String getProfessionalStatus() {
+	public boolean getProfessionalStatus() {
 		return professionalStatus;
 	}
 
