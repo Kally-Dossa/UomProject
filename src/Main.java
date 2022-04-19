@@ -2,9 +2,9 @@
 public class Main {
 
 	public static void main(String[] args) {
-		Registry theReigstry = new Registry();
+		Registry theRegistry = new Registry();
 		
-		new StartingGUI();
+		new StartingGUI(theRegistry);
 	}
 
 }

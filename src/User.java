@@ -6,7 +6,7 @@ public abstract class User implements Serializable{
 	protected String name, lastName, sex, email, phoneNum, language;
 	protected int age;
 	protected boolean pet, smoker, professionalStatus;
-	protected ArrayList<User> suggestRoomatesList = new ArrayList<User>();
+	
 	//να μπορουν να βαλουν και προσωπικη φωτογραφια 
 	
 	

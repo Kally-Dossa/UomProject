@@ -18,17 +18,19 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.awt.event.ItemEvent;
 
-public class SignUpGUI extends JFrame {
+public class NoHomeSignUpGUI extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private Registry theRegistry;
 	
 	
-	
-	public SignUpGUI() {
+	public NoHomeSignUpGUI(Registry aRegistry) {
+		setResizable(false);
+		theRegistry = aRegistry;
 		getContentPane().setBackground(UIManager.getColor("List.selectionBackground"));
 		setBackground(new Color(0, 204, 255));
 		
@@ -36,7 +38,6 @@ public class SignUpGUI extends JFrame {
 			
 		this.setVisible(true);
 		this.setSize(314, 468);
-		//this.pack();
 		this.setTitle("User details");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -121,15 +122,20 @@ public class SignUpGUI extends JFrame {
 		getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Male");
-		rdbtnNewRadioButton.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnNewRadioButton.setBounds(109, 98, 64, 23);
-		getContentPane().add(rdbtnNewRadioButton);
+		JRadioButton rdbtnMale = new JRadioButton("Male");
+		rdbtnMale.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		rdbtnMale.setBackground(UIManager.getColor("List.selectionBackground"));
+		rdbtnMale.setBounds(109, 98, 64, 23);
+		getContentPane().add(rdbtnMale);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Female");
-		rdbtnNewRadioButton_1.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnNewRadioButton_1.setBounds(196, 98, 70, 23);
-		getContentPane().add(rdbtnNewRadioButton_1);
+		JRadioButton rdbtnFemale = new JRadioButton("Female");
+		rdbtnFemale.setBackground(UIManager.getColor("List.selectionBackground"));
+		rdbtnFemale.setBounds(196, 98, 70, 23);
+		getContentPane().add(rdbtnFemale);
 		
 		textField_2 = new JTextField();
 		textField_2.setBounds(109, 131, 106, 20);
@@ -151,29 +157,25 @@ public class SignUpGUI extends JFrame {
 		getContentPane().add(textField_5);
 		textField_5.setColumns(10);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Yes");
-		rdbtnNewRadioButton_2.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-			}
-		});
-		rdbtnNewRadioButton_2.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnNewRadioButton_2.setBounds(109, 253, 49, 23);
-		getContentPane().add(rdbtnNewRadioButton_2);
+		JRadioButton rdbtnPetYes = new JRadioButton("Yes");
+		rdbtnPetYes.setBackground(UIManager.getColor("List.selectionBackground"));
+		rdbtnPetYes.setBounds(109, 253, 49, 23);
+		getContentPane().add(rdbtnPetYes);
 		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("No");
-		rdbtnNewRadioButton_3.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnNewRadioButton_3.setBounds(196, 250, 49, 23);
-		getContentPane().add(rdbtnNewRadioButton_3);
+		JRadioButton rdbtnPetNo = new JRadioButton("No");
+		rdbtnPetNo.setBackground(UIManager.getColor("List.selectionBackground"));
+		rdbtnPetNo.setBounds(196, 250, 49, 23);
+		getContentPane().add(rdbtnPetNo);
 		
-		JRadioButton rdbtnNewRadioButton_2_1 = new JRadioButton("Yes");
-		rdbtnNewRadioButton_2_1.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnNewRadioButton_2_1.setBounds(109, 284, 49, 23);
-		getContentPane().add(rdbtnNewRadioButton_2_1);
+		JRadioButton rdbtnSmokingYes = new JRadioButton("Yes");
+		rdbtnSmokingYes.setBackground(UIManager.getColor("List.selectionBackground"));
+		rdbtnSmokingYes.setBounds(109, 284, 49, 23);
+		getContentPane().add(rdbtnSmokingYes);
 		
-		JRadioButton rdbtnNewRadioButton_3_1 = new JRadioButton("No");
-		rdbtnNewRadioButton_3_1.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnNewRadioButton_3_1.setBounds(196, 284, 45, 23);
-		getContentPane().add(rdbtnNewRadioButton_3_1);
+		JRadioButton rdbtnSmokingNo = new JRadioButton("No");
+		rdbtnSmokingNo.setBackground(UIManager.getColor("List.selectionBackground"));
+		rdbtnSmokingNo.setBounds(196, 284, 45, 23);
+		getContentPane().add(rdbtnSmokingNo);
 		
 		JTextPane txtpnWorking = new JTextPane();
 		txtpnWorking.setText("Working:");
@@ -192,34 +194,110 @@ public class SignUpGUI extends JFrame {
 		rdbtnUnemployed.setBounds(196, 310, 113, 23);
 		getContentPane().add(rdbtnUnemployed);
 		
+		//All Radio Buttons Listeners
+		rdbtnMale.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnFemale.setEnabled(false);
+				if(!rdbtnMale.isSelected()) {
+					rdbtnFemale.setEnabled(true);
+				}
+			}
+		});
+		
+		rdbtnFemale.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnMale.setEnabled(false);
+				if(!rdbtnFemale.isSelected()) {
+					rdbtnMale.setEnabled(true);
+				}
+			}
+		});
+		
+		rdbtnPetYes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnPetNo.setEnabled(false);
+				if(!rdbtnPetYes.isSelected()) {
+					rdbtnPetNo.setEnabled(true);
+				}
+			}
+		});
+		
+		rdbtnPetNo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnPetYes.setEnabled(false);
+				if(!rdbtnPetNo.isSelected()) {
+					rdbtnPetYes.setEnabled(true);
+				}
+			}
+		});
+		
+		rdbtnSmokingYes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnSmokingNo.setEnabled(false);
+				if(!rdbtnSmokingYes.isSelected()) {
+					rdbtnSmokingNo.setEnabled(true);
+				}
+			}
+		});
+		
+		rdbtnSmokingNo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnSmokingYes.setEnabled(false);
+				if(!rdbtnSmokingNo.isSelected()) {
+					rdbtnSmokingYes.setEnabled(true);
+				}
+			}
+		});
+		
+		rdbtnEmployed.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnUnemployed.setEnabled(false);
+				if(!rdbtnEmployed.isSelected()) {
+					rdbtnUnemployed.setEnabled(true);
+				}
+			}
+		});
+		
+		rdbtnUnemployed.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnEmployed.setEnabled(false);
+				if(!rdbtnUnemployed.isSelected()) {
+					rdbtnEmployed.setEnabled(true);
+				}
+			}
+		});
+		
+		//Create Profile Button Listener
 		JButton btnNewButton = new JButton("Create Profile");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String gender = "";
 				int age = Integer.parseInt(textField_2.getText());
-				if(rdbtnNewRadioButton.isSelected()) {
-					gender = rdbtnNewRadioButton.getText();
+				if(rdbtnMale.isSelected()) {
+					gender = rdbtnMale.getText();
 				}
 				
 				else {
-					gender = rdbtnNewRadioButton_1.getText();
+					gender = rdbtnFemale.getText();
 				}
-				User aUser = new NoHome(textField.getText(),textField_1.getText(),gender,age
-						,textField_3.getText(),textField_4.getText(),textField_5.getText(),
-						rdbtnNewRadioButton_2.isSelected(),rdbtnNewRadioButton_2_1.isSelected(),rdbtnEmployed.isSelected());
+				
 				File f = new File("ourDatabase.txt");
 				try {
+					User aUser = new NoHome(textField.getText(),textField_1.getText(),gender,age
+						,textField_3.getText(),textField_4.getText(),textField_5.getText(),
+						rdbtnPetYes.isSelected(),rdbtnSmokingYes.isSelected(),rdbtnEmployed.isSelected());
+					
 					FileOutputStream fouts = new FileOutputStream(f);
 					ObjectOutputStream douts = new ObjectOutputStream(fouts);
 					douts.writeObject(aUser);
 					douts.close();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 			}
 		}); 
-		btnNewButton.setBounds(88, 395, 106, 23);
+		btnNewButton.setBounds(98, 395, 106, 23);
 		getContentPane().add(btnNewButton);
 		
 		

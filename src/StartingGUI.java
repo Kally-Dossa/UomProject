@@ -17,11 +17,12 @@ import javax.swing.UIManager;
 public class StartingGUI extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
-	
+	private Registry theRegistry;
 	
 
 	
-	public StartingGUI() {
+	public StartingGUI(Registry aRegistry) {
+		theRegistry = aRegistry;
 		getContentPane().setBackground(UIManager.getColor("List.selectionBackground"));
 		getContentPane().setLayout(null);
 		
@@ -74,7 +75,7 @@ public class StartingGUI extends JFrame {
 		JButton btnNewButton_1 = new JButton("Sign Up");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new SignUpGUI();
+				new WhatAreYouLookingForGUI(theRegistry);
 			}
 		});
 		btnNewButton_1.setBounds(162, 338, 89, 23);

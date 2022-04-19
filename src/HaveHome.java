@@ -1,12 +1,15 @@
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class HaveHome extends User {
+public class HaveHome extends User implements Serializable{
 	private Home myHome;
-
+	private ArrayList<NoHome> suggestedRoomates;
 	
-	public HaveHome(String aName, String aLastName, String aSex, String anEmail, String aPhoneNum, String aLanguage,
-			String aProfessionalStatus, int anAge, boolean aPet, boolean aSmoker, Home aHome) {
-		super(aName, aLastName, aSex, anEmail, aPhoneNum, aLanguage, aProfessionalStatus,anAge, aPet, aSmoker);
+	public HaveHome(String aName, String aLastName, String aSex,int anAge, String anEmail, String aPhoneNum, String aLanguage,
+			boolean aProfessionalStatus,  boolean aPet, boolean aSmoker, Home aHome) {
+		super(aName, aLastName, aSex,anAge, anEmail, aPhoneNum, aLanguage, aProfessionalStatus, aPet, aSmoker);
 		myHome = aHome;
+		suggestedRoomates = new ArrayList<NoHome>();
 	}
 
 

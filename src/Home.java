@@ -2,20 +2,20 @@
 public class Home {
 	
 	private double rent;
-	private String holder,address,area,petsAllowd,typeOfHeating;
-	private int bedrooms,floor,cm2;
+	private String address,area,typeOfHeating;
+	private int bedrooms,floor,m2;
+	private boolean petsAllowed;
 	
-	public Home(double rent, String holder, String address, String area, String petsAllowd, String typeOfHeating,
-			int bedrooms, int floor, int cm2) {
+	public Home(double rent, String address, String area, boolean petsAllowed, String typeOfHeating,
+			int bedrooms, int floor, int m2) {
 		this.rent = rent;
-		this.holder = holder;
 		this.address = address;
 		this.area = area;
-		this.petsAllowd = petsAllowd;
+		this.petsAllowed = petsAllowed;
 		this.typeOfHeating = typeOfHeating;
 		this.bedrooms = bedrooms;
 		this.floor = floor;
-		this.cm2 = cm2;
+		this.m2 = m2;
 	}
 	
 	
@@ -29,19 +29,6 @@ public class Home {
 	public void setRent(double rent) {
 		this.rent = rent;
 	}
-
-
-
-	public String getHolder() {
-		return holder;
-	}
-
-
-
-	public void setHolder(String holder) {
-		this.holder = holder;
-	}
-
 
 
 	public String getAddress() {
@@ -68,14 +55,14 @@ public class Home {
 
 
 
-	public String getPetsAllowd() {
-		return petsAllowd;
+	public boolean getPetsAllowd() {
+		return petsAllowed;
 	}
 
 
 
-	public void setPetsAllowd(String petsAllowd) {
-		this.petsAllowd = petsAllowd;
+	public void setPetsAllowd(boolean petsAllowd) {
+		this.petsAllowed = petsAllowed;
 	}
 
 
@@ -117,13 +104,13 @@ public class Home {
 
 
 	public int getCm2() {
-		return cm2;
+		return m2;
 	}
 
 
 
-	public void setCm2(int cm2) {
-		this.cm2 = cm2;
+	public void setCm2(int m2) {
+		this.m2 = m2;
 	}
 
 	
