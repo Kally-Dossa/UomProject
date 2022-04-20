@@ -3,20 +3,21 @@ import java.util.ArrayList;
 
 public abstract class User implements Serializable{
 	
-	protected String name, lastName, sex, email, phoneNum, language;
+	protected String name, lastName, sex, email, password, phoneNum, language;
 	protected int age;
 	protected boolean pet, smoker, professionalStatus;
 	
 	//να μπορουν να βαλουν και προσωπικη φωτογραφια 
 	
 	
-	public User(String aName, String aLastName, String aSex,int anAge, String anEmail, String aPhoneNum, String aLanguage,  boolean aPet,
+	public User(String aName, String aLastName, String aSex,int anAge, String anEmail,String pass, String aPhoneNum, String aLanguage,  boolean aPet,
 			boolean aSmoker, boolean aProfessionalStatus) {
 		super();
 		name = aName;
 		lastName = aLastName;
 		sex = aSex;
 		email = anEmail;
+		password = pass;
 		phoneNum = aPhoneNum;
 		language = aLanguage;
 		professionalStatus = aProfessionalStatus;
@@ -27,6 +28,7 @@ public abstract class User implements Serializable{
 	}
 	
 	public abstract User getUser();
+	public abstract boolean hasHome();
 
 	public String getName() {
 		return name;

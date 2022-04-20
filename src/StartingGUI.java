@@ -1,22 +1,18 @@
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import java.awt.Color;
 import javax.swing.JTextPane;
-import javax.swing.JRadioButton;
-import java.awt.Font;
-import java.awt.SystemColor;
 import javax.swing.UIManager;
 
 
 public class StartingGUI extends JFrame {
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textFieldEmail;
+	private JTextField textFieldPass;
 	private Registry theRegistry;
 	
 
@@ -34,18 +30,18 @@ public class StartingGUI extends JFrame {
 		txtpnWelcomeToRoom.setBounds(112, 11, 200, 33);
 		getContentPane().add(txtpnWelcomeToRoom);
 		
-		JTextPane txtpnUsername = new JTextPane();
-		txtpnUsername.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		txtpnUsername.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnUsername.setEditable(false);
-		txtpnUsername.setText("Username:");
-		txtpnUsername.setBounds(162, 87, 80, 20);
-		getContentPane().add(txtpnUsername);
+		JTextPane txtpnEmail = new JTextPane();
+		txtpnEmail.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		txtpnEmail.setBackground(UIManager.getColor("List.selectionBackground"));
+		txtpnEmail.setEditable(false);
+		txtpnEmail.setText("Email:");
+		txtpnEmail.setBounds(162, 87, 59, 20);
+		getContentPane().add(txtpnEmail);
 		
-		textField = new JTextField();
-		textField.setBounds(162, 118, 86, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldEmail = new JTextField();
+		textFieldEmail.setBounds(162, 118, 86, 20);
+		getContentPane().add(textFieldEmail);
+		textFieldEmail.setColumns(10);
 		
 		JTextPane txtpnPassword = new JTextPane();
 		txtpnPassword.setText("Password:");
@@ -55,14 +51,32 @@ public class StartingGUI extends JFrame {
 		txtpnPassword.setBounds(162, 145, 80, 20);
 		getContentPane().add(txtpnPassword);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(162, 176, 86, 20);
-		getContentPane().add(textField_1);
+		textFieldPass = new JTextField();
+		textFieldPass.setColumns(10);
+		textFieldPass.setBounds(162, 176, 86, 20);
+		getContentPane().add(textFieldPass);
 		
-		JButton btnNewButton = new JButton("Sign In");
-		btnNewButton.setBounds(162, 222, 89, 23);
-		getContentPane().add(btnNewButton);
+		JButton btnSignIn = new JButton("Sign In");
+		/*btnSignIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String mail = textFieldEmail.getText();
+				String pass = textFieldPass.getText();
+				ArrayList<HaveHome> aList = theRegistry.getListWithHome();					edw prepei na elegxei mail kai pass an einai swsta 
+				ArrayList<NoHome> anotherList = theRegistry.getListWithoutHome();			gia na ton pigainei sto epomeno gui me tous proteinomenous(den exei ginei akoma).
+				boolean found = false;														
+				boolean correct = false;
+				
+				for(int i=0;i<aList.size();i++) {
+					if(aList.get(i).email==mail) {
+						
+					}
+				}
+				
+				
+			}
+		});*/
+		btnSignIn.setBounds(162, 222, 89, 23);
+		getContentPane().add(btnSignIn);
 		
 		JTextPane txtpnIfYouDont = new JTextPane();
 		txtpnIfYouDont.setFont(new Font("Times New Roman", Font.PLAIN, 14));
@@ -72,14 +86,14 @@ public class StartingGUI extends JFrame {
 		txtpnIfYouDont.setBounds(126, 280, 198, 47);
 		getContentPane().add(txtpnIfYouDont);
 		
-		JButton btnNewButton_1 = new JButton("Sign Up");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnSignUp = new JButton("Sign Up");
+		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new WhatAreYouLookingForGUI(theRegistry);
 			}
 		});
-		btnNewButton_1.setBounds(162, 338, 89, 23);
-		getContentPane().add(btnNewButton_1);
+		btnSignUp.setBounds(162, 338, 89, 23);
+		getContentPane().add(btnSignUp);
 		
 		this.setVisible(true);
 		this.setSize(450, 447);

@@ -9,7 +9,11 @@ public class Registry {
 		somebodyWithoutHome = new ArrayList<NoHome>();
 	}
 	
-	public ArrayList<User> suggestedRoomates(){
-		return null;
+	public ArrayList<HaveHome> getListWithHome(){
+		return somebodyWithHome;
+	}
+	
+	public ArrayList<NoHome> getListWithoutHome(){
+		return somebodyWithoutHome;
 	}
 }

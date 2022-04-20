@@ -248,6 +248,24 @@ public class HaveHomeSignUpGUI extends JFrame {
 			}
 		});
 		
+		rdbtnEmployed.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnUnemployed.setEnabled(false);
+				if(!rdbtnEmployed.isSelected()) {
+					rdbtnUnemployed.setEnabled(true);
+				}
+			}
+		});
+		
+		rdbtnUnemployed.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnEmployed.setEnabled(false);
+				if(!rdbtnUnemployed.isSelected()) {
+					rdbtnEmployed.setEnabled(true);
+				}
+			}
+		});
+		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(12, 346, 395, 2);
 		getContentPane().add(separator);
@@ -355,6 +373,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 		rdbtnHousePetNo.setBounds(221, 545, 72, 23);
 		getContentPane().add(rdbtnHousePetNo);
 		
+		//House Info Radio Button Listeners
 		rdbtnHousePetYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				rdbtnHousePetNo.setEnabled(false);

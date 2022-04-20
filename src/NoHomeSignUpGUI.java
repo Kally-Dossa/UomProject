@@ -19,13 +19,14 @@ import java.io.ObjectOutputStream;
 import java.awt.event.ItemEvent;
 
 public class NoHomeSignUpGUI extends JFrame {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField textFieldName;
+	private JTextField textFieldSurname;
+	private JTextField textFieldMail;
+	private JTextField textFieldPhone;
+	private JTextField textFieldLang;
 	private Registry theRegistry;
+	private JTextField textFieldPass;
+	private JTextField textFieldAge;
 	
 	
 	public NoHomeSignUpGUI(Registry aRegistry) {
@@ -67,15 +68,8 @@ public class NoHomeSignUpGUI extends JFrame {
 		txtpnGender.setEditable(false);
 		txtpnGender.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnGender.setText("Gender:");
-		txtpnGender.setBounds(10, 101, 49, 20);
+		txtpnGender.setBounds(10, 254, 49, 20);
 		getContentPane().add(txtpnGender);
-		
-		JTextPane txtpnAge = new JTextPane();
-		txtpnAge.setEditable(false);
-		txtpnAge.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnAge.setText("Age:");
-		txtpnAge.setBounds(10, 131, 30, 20);
-		getContentPane().add(txtpnAge);
 		
 		JTextPane txtpnEmail = new JTextPane();
 		txtpnEmail.setEditable(false);
@@ -102,7 +96,7 @@ public class NoHomeSignUpGUI extends JFrame {
 		txtpnPet.setEditable(false);
 		txtpnPet.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnPet.setText("Pet:");
-		txtpnPet.setBounds(10, 253, 49, 20);
+		txtpnPet.setBounds(10, 340, 49, 20);
 		getContentPane().add(txtpnPet);
 		
 		JTextPane txtpnSmoker = new JTextPane();
@@ -112,15 +106,15 @@ public class NoHomeSignUpGUI extends JFrame {
 		txtpnSmoker.setBounds(10, 284, 49, 20);
 		getContentPane().add(txtpnSmoker);
 		
-		textField = new JTextField();
-		textField.setBounds(109, 43, 106, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldName = new JTextField();
+		textFieldName.setBounds(109, 43, 106, 20);
+		getContentPane().add(textFieldName);
+		textFieldName.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(109, 74, 106, 20);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textFieldSurname = new JTextField();
+		textFieldSurname.setBounds(109, 74, 106, 20);
+		getContentPane().add(textFieldSurname);
+		textFieldSurname.setColumns(10);
 		
 		JRadioButton rdbtnMale = new JRadioButton("Male");
 		rdbtnMale.addActionListener(new ActionListener() {
@@ -129,42 +123,37 @@ public class NoHomeSignUpGUI extends JFrame {
 			}
 		});
 		rdbtnMale.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnMale.setBounds(109, 98, 64, 23);
+		rdbtnMale.setBounds(109, 251, 64, 23);
 		getContentPane().add(rdbtnMale);
 		
 		JRadioButton rdbtnFemale = new JRadioButton("Female");
 		rdbtnFemale.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnFemale.setBounds(196, 98, 70, 23);
+		rdbtnFemale.setBounds(196, 251, 70, 23);
 		getContentPane().add(rdbtnFemale);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(109, 131, 106, 20);
-		getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		textFieldMail = new JTextField();
+		textFieldMail.setBounds(109, 162, 108, 20);
+		getContentPane().add(textFieldMail);
+		textFieldMail.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(109, 162, 108, 20);
-		getContentPane().add(textField_3);
-		textField_3.setColumns(10);
+		textFieldPhone = new JTextField();
+		textFieldPhone.setBounds(109, 193, 106, 20);
+		getContentPane().add(textFieldPhone);
+		textFieldPhone.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(109, 193, 106, 20);
-		getContentPane().add(textField_4);
-		textField_4.setColumns(10);
-		
-		textField_5 = new JTextField();
-		textField_5.setBounds(109, 224, 109, 20);
-		getContentPane().add(textField_5);
-		textField_5.setColumns(10);
+		textFieldLang = new JTextField();
+		textFieldLang.setBounds(109, 224, 109, 20);
+		getContentPane().add(textFieldLang);
+		textFieldLang.setColumns(10);
 		
 		JRadioButton rdbtnPetYes = new JRadioButton("Yes");
 		rdbtnPetYes.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnPetYes.setBounds(109, 253, 49, 23);
+		rdbtnPetYes.setBounds(109, 340, 49, 23);
 		getContentPane().add(rdbtnPetYes);
 		
 		JRadioButton rdbtnPetNo = new JRadioButton("No");
 		rdbtnPetNo.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnPetNo.setBounds(196, 250, 49, 23);
+		rdbtnPetNo.setBounds(196, 337, 49, 23);
 		getContentPane().add(rdbtnPetNo);
 		
 		JRadioButton rdbtnSmokingYes = new JRadioButton("Yes");
@@ -272,7 +261,7 @@ public class NoHomeSignUpGUI extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String gender = "";
-				int age = Integer.parseInt(textField_2.getText());
+				int age = Integer.parseInt(textFieldAge.getText());
 				if(rdbtnMale.isSelected()) {
 					gender = rdbtnMale.getText();
 				}
@@ -281,10 +270,10 @@ public class NoHomeSignUpGUI extends JFrame {
 					gender = rdbtnFemale.getText();
 				}
 				
-				File f = new File("ourDatabase.txt");
+				File f = new File("ourDatabase.ser");
 				try {
-					User aUser = new NoHome(textField.getText(),textField_1.getText(),gender,age
-						,textField_3.getText(),textField_4.getText(),textField_5.getText(),
+					User aUser = new NoHome(textFieldName.getText(),textFieldSurname.getText(),gender,age
+						,textFieldMail.getText(),textFieldPass.getText(), textFieldPhone.getText(),textFieldLang.getText(),
 						rdbtnPetYes.isSelected(),rdbtnSmokingYes.isSelected(),rdbtnEmployed.isSelected());
 					
 					FileOutputStream fouts = new FileOutputStream(f);
@@ -295,10 +284,36 @@ public class NoHomeSignUpGUI extends JFrame {
 					
 					e1.printStackTrace();
 				}
+				
+				new StartingGUI(theRegistry);
 			}
 		}); 
 		btnNewButton.setBounds(98, 395, 106, 23);
 		getContentPane().add(btnNewButton);
+		
+		JTextPane txtpnPassword = new JTextPane();
+		txtpnPassword.setText("Password:");
+		txtpnPassword.setEditable(false);
+		txtpnPassword.setBackground(SystemColor.textHighlight);
+		txtpnPassword.setBounds(10, 131, 70, 20);
+		getContentPane().add(txtpnPassword);
+		
+		textFieldPass = new JTextField();
+		textFieldPass.setColumns(10);
+		textFieldPass.setBounds(109, 131, 106, 20);
+		getContentPane().add(textFieldPass);
+		
+		JTextPane txtpnAge = new JTextPane();
+		txtpnAge.setText("Age:");
+		txtpnAge.setEditable(false);
+		txtpnAge.setBackground(SystemColor.textHighlight);
+		txtpnAge.setBounds(10, 100, 30, 20);
+		getContentPane().add(txtpnAge);
+		
+		textFieldAge = new JTextField();
+		textFieldAge.setColumns(10);
+		textFieldAge.setBounds(109, 100, 106, 20);
+		getContentPane().add(textFieldAge);
 		
 		
 		
