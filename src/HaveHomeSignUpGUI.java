@@ -46,13 +46,13 @@ public class HaveHomeSignUpGUI extends JFrame {
 		scrollPane.setBounds(0, 0, 2, 400);
 		getContentPane().add(scrollPane);
 		
-		JTextPane txtpnPleaseFillThe = new JTextPane();
-		txtpnPleaseFillThe.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtpnPleaseFillThe.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnPleaseFillThe.setEditable(false);
-		txtpnPleaseFillThe.setText("Please fill the following information about you:");
-		txtpnPleaseFillThe.setBounds(12, 11, 318, 20);
-		getContentPane().add(txtpnPleaseFillThe);
+		JTextPane txtpnPleaseFillThe = new JTextPane();						//afta einai ta gramata "plese fill the following info"
+		txtpnPleaseFillThe.setFont(new Font("Tahoma", Font.PLAIN, 13));				//gramatosira kai megethos gramaton
+		txtpnPleaseFillThe.setBackground(UIManager.getColor("List.selectionBackground"));	//xroma background
+		txtpnPleaseFillThe.setEditable(false);							//na min exis tin dinatotita gia edit
+		txtpnPleaseFillThe.setText("Please fill the following information about you:");		//ti grafi to pane
+		txtpnPleaseFillThe.setBounds(12, 11, 318, 20);						//size
+		getContentPane().add(txtpnPleaseFillThe);						//to prostheti sto geniko pane
 		
 		JTextPane txtpnName = new JTextPane();
 		txtpnName.setText("Name:");
@@ -129,7 +129,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
+		textField_1 = new JTextField();				//ta textField einai ta koutakia opou o xristis mpori na pliktrologisi dipla apo ta stoixia pou tou zita
 		textField_1.setColumns(10);
 		textField_1.setBounds(129, 73, 126, 20);
 		getContentPane().add(textField_1);
@@ -153,8 +153,8 @@ public class HaveHomeSignUpGUI extends JFrame {
 		textField_5.setColumns(10);
 		textField_5.setBounds(129, 228, 126, 20);
 		getContentPane().add(textField_5);
-		
-		JRadioButton rdbtnMale = new JRadioButton("Male");
+		//JRadioButton einai ta koutakia epilogis stin simplirosi stoixion
+		JRadioButton rdbtnMale = new JRadioButton("Male");				
 		rdbtnMale.setBackground(UIManager.getColor("List.selectionBackground"));
 		rdbtnMale.setBounds(122, 104, 72, 23);
 		getContentPane().add(rdbtnMale);
@@ -195,7 +195,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 		getContentPane().add(rdbtnUnemployed);
 		
 		//Personal Info Radio Buttons Listeners
-		rdbtnMale.addActionListener(new ActionListener() {
+		rdbtnMale.addActionListener(new ActionListener() {  	 //se dini tin dinatotita na epileksis metaksi 2 epilogon (male or female) oxi kai ta 2!
 			public void actionPerformed(ActionEvent e) {
 				rdbtnFemale.setEnabled(false);
 				if(!rdbtnMale.isSelected()) {
@@ -395,7 +395,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 		JButton btnNewButton = new JButton("Create Profile");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				//tha prosthethi o idios kodikas me to create button me to noHomeSignUpGUI
 			}
 		});
 		btnNewButton.setBounds(139, 636, 106, 23);
