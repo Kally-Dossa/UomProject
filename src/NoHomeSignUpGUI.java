@@ -294,7 +294,7 @@ public class NoHomeSignUpGUI extends JFrame {
 		JTextPane txtpnPassword = new JTextPane();
 		txtpnPassword.setText("Password:");
 		txtpnPassword.setEditable(false);
-		txtpnPassword.setBackground(SystemColor.textHighlight);
+		txtpnPassword.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnPassword.setBounds(10, 131, 70, 20);
 		getContentPane().add(txtpnPassword);
 		
@@ -306,7 +306,7 @@ public class NoHomeSignUpGUI extends JFrame {
 		JTextPane txtpnAge = new JTextPane();
 		txtpnAge.setText("Age:");
 		txtpnAge.setEditable(false);
-		txtpnAge.setBackground(SystemColor.textHighlight);
+		txtpnAge.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnAge.setBounds(10, 100, 30, 20);
 		getContentPane().add(txtpnAge);
 		
