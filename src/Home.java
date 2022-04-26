@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Home {
+public class Home implements Serializable{
 	
 	private double rent;
 	private String address,area,typeOfHeating;

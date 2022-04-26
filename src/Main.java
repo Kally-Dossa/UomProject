@@ -8,27 +8,42 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-		Registry theRegistry = new Registry();
-		ArrayList<User> users = new ArrayList<User>();
+		ArrayList<HaveHome> haveHomeUsers = new ArrayList<HaveHome>();
+		ArrayList<NoHome> noHomeUsers = new ArrayList<NoHome>();
 		
+		//Diavasma arxeiou gia HaveHome Users
 		try {
-			File f = new File("ourDatabase.ser");
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(f));
-			users = (ArrayList<User>) in.readObject();
-		} catch (IOException | ClassNotFoundException e) {
-			
-			e.printStackTrace();
+			FileInputStream fileIn = new FileInputStream("Users_With_Home.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			haveHomeUsers = (ArrayList<HaveHome>) in.readObject();							
+			in.close();
+			fileIn.close();		
+		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+		catch(ClassNotFoundException c) {
+			c.printStackTrace();
 		}
 		
-		for(int i=0;i<users.size();i++) {
-			if(users.get(i).hasHome()) {
-				theRegistry.getListWithHome().add((HaveHome)users.get(i));
-			}
-			else {
-				theRegistry.getListWithoutHome().add((NoHome)users.get(i));
-			}
-			
+		
+		//Diavasma arxeiou gia NoHome Users
+		try {
+			FileInputStream fileIn = new FileInputStream("Users_Without_Home.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);						
+			noHomeUsers = (ArrayList<NoHome>) in.readObject();
+			in.close();
+			fileIn.close();		
 		}
+		catch(IOException i) {
+			i.printStackTrace();
+		}
+		catch(ClassNotFoundException c) {
+			c.printStackTrace();
+		}
+		
+		Registry theRegistry = new Registry(haveHomeUsers, noHomeUsers);
+		
 		
 		new StartingGUI(theRegistry);
 	}
