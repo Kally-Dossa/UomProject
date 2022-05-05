@@ -92,6 +92,7 @@ public class StartingGUI extends JFrame {
 				new WhatAreYouLookingForGUI(theRegistry);
 			}
 		});
+
 		btnSignUp.setBounds(162, 338, 89, 23);
 		getContentPane().add(btnSignUp);
 		
@@ -101,4 +102,5 @@ public class StartingGUI extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
+
 }

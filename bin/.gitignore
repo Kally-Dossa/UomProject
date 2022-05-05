@@ -1,3 +1,4 @@
+/HaveHome.class
 /HaveHomeSignUpGUI$1.class
 /HaveHomeSignUpGUI$10.class
 /HaveHomeSignUpGUI$11.class
@@ -10,6 +11,9 @@
 /HaveHomeSignUpGUI$8.class
 /HaveHomeSignUpGUI$9.class
 /HaveHomeSignUpGUI.class
+/Home.class
+/Main.class
+/NoHome.class
 /NoHomeSignUpGUI$1.class
 /NoHomeSignUpGUI$10.class
 /NoHomeSignUpGUI$2.class
@@ -21,9 +25,14 @@
 /NoHomeSignUpGUI$8.class
 /NoHomeSignUpGUI$9.class
 /NoHomeSignUpGUI.class
+/Registry.class
 /StartingGUI$1.class
+/StartingGUI$ButtonListener.class
 /StartingGUI.class
+/User.class
+/UserGUI.class
 /WhatAreYouLookingForGUI$1.class
 /WhatAreYouLookingForGUI$2.class
 /WhatAreYouLookingForGUI$3.class
 /WhatAreYouLookingForGUI.class
+/UserGUI$ButtonListener.class
