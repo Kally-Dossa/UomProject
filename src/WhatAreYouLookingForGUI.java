@@ -66,7 +66,7 @@ public class WhatAreYouLookingForGUI extends JFrame{
 					
 				}
 					
-				
+				WhatAreYouLookingForGUI.this.dispose();
 			}
 		});
 		btnNewButton.setBounds(321, 215, 89, 23);

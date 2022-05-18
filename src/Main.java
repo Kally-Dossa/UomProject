@@ -10,25 +10,35 @@ public class Main {
 
 	public static void main(String[] args) {
 		Registry theRegistry = new Registry();
-		ArrayList<User> users = new ArrayList<User>();
+		ArrayList<HaveHome> haveHomeUsers = new ArrayList<HaveHome>();
+		ArrayList<NoHome> noHomeUsers = new ArrayList<NoHome>();
 		
 		try {
-			File f = new File("ourDatabase.ser");
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(f));
-			users = (ArrayList<User>) in.readObject();
+			File f1 = new File("HaveHomeList.ser");
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(f1));
+			haveHomeUsers = (ArrayList<HaveHome>) in.readObject();
+			in.close();
 		} catch (IOException | ClassNotFoundException e) {
 			
 			e.printStackTrace();
 		}
 		
-		for(int i=0;i<users.size();i++) {
-			if(users.get(i).hasHome()) {
-				theRegistry.getListWithHome().add((HaveHome)users.get(i));
-			}
-			else {
-				theRegistry.getListWithoutHome().add((NoHome)users.get(i));
-			}
+		for(int i=0;i<haveHomeUsers.size();i++) {
+			theRegistry.getListWithHome().add(haveHomeUsers.get(i));			
+		}
+		
+		try {
+			File f2 = new File("NoHomeList.ser");
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(f2));
+			noHomeUsers = (ArrayList<NoHome>) in.readObject();
+			in.close();
+		} catch (IOException | ClassNotFoundException e) {
 			
+			e.printStackTrace();
+		}
+		
+		for(int i=0;i<noHomeUsers.size();i++) {
+			theRegistry.getListWithoutHome().add(noHomeUsers.get(i));			
 		}
 		
 		new StartingGUI(theRegistry);

@@ -7,8 +7,18 @@ public abstract class User implements Serializable{
 	protected int age;
 	protected boolean pet, smoker, professionalStatus;
 	
-	//να μπορουν να βαλουν και προσωπικη φωτογραφια 
 	
+	public User() {
+		name = "";
+		lastName = "";
+		sex = "";
+		email = "";
+		password = "";
+		phoneNum = "";
+		language = "";
+		age = 0;
+		pet = smoker = professionalStatus = false;
+	}
 	
 	public User(String aName, String aLastName, String aSex,int anAge, String anEmail,String pass, String aPhoneNum, String aLanguage,  boolean aPet,
 			boolean aSmoker, boolean aProfessionalStatus) {
@@ -29,7 +39,11 @@ public abstract class User implements Serializable{
 	
 	public abstract User getUser();
 	public abstract boolean hasHome();
-
+	
+	public String getPass() {
+		return password;
+	}
+	
 	public String getName() {
 		return name;
 	}

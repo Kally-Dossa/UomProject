@@ -1,22 +1,19 @@
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.JTextPane;
-import javax.swing.UIManager;
-import javax.swing.JRadioButton;
-import java.awt.SystemColor;
-import java.awt.event.ItemListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.awt.event.ItemEvent;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.UIManager;
 
 public class NoHomeSignUpGUI extends JFrame {
 	private JTextField textFieldName;
@@ -25,8 +22,8 @@ public class NoHomeSignUpGUI extends JFrame {
 	private JTextField textFieldPhone;
 	private JTextField textFieldLang;
 	private Registry theRegistry;
-	private JTextField textFieldPass;
 	private JTextField textFieldAge;
+	private JPasswordField passwordField;
 	
 	
 	public NoHomeSignUpGUI(Registry aRegistry) {
@@ -75,7 +72,7 @@ public class NoHomeSignUpGUI extends JFrame {
 		txtpnEmail.setEditable(false);
 		txtpnEmail.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnEmail.setText("Email:");
-		txtpnEmail.setBounds(10, 162, 38, 20);
+		txtpnEmail.setBounds(10, 100, 38, 20);
 		getContentPane().add(txtpnEmail);
 		
 		JTextPane txtpnPhone = new JTextPane();
@@ -132,7 +129,7 @@ public class NoHomeSignUpGUI extends JFrame {
 		getContentPane().add(rdbtnFemale);
 		
 		textFieldMail = new JTextField();
-		textFieldMail.setBounds(109, 162, 108, 20);
+		textFieldMail.setBounds(109, 100, 108, 20);
 		getContentPane().add(textFieldMail);
 		textFieldMail.setColumns(10);
 		
@@ -270,22 +267,26 @@ public class NoHomeSignUpGUI extends JFrame {
 					gender = rdbtnFemale.getText();
 				}
 				
-				File f = new File("ourDatabase.ser");
+				File f = new File("NoHomeList.ser");
 				try {
-					User aUser = new NoHome(textFieldName.getText(),textFieldSurname.getText(),gender,age
-						,textFieldMail.getText(),textFieldPass.getText(), textFieldPhone.getText(),textFieldLang.getText(),
+					NoHome aUser = new NoHome(textFieldName.getText(),textFieldSurname.getText(),gender,age
+						,textFieldMail.getText(),passwordField.getPassword().toString(), textFieldPhone.getText(),textFieldLang.getText(),
 						rdbtnPetYes.isSelected(),rdbtnSmokingYes.isSelected(),rdbtnEmployed.isSelected());
 					
-					FileOutputStream fouts = new FileOutputStream(f);
+					
+					theRegistry.addNoHome(aUser);
+					
+					FileOutputStream fouts = new FileOutputStream(f, false);
 					ObjectOutputStream douts = new ObjectOutputStream(fouts);
-					douts.writeObject(aUser);
+					douts.writeObject(theRegistry.getListWithoutHome());
 					douts.close();
 				} catch (IOException e1) {
 					
 					e1.printStackTrace();
 				}
-				
+				NoHomeSignUpGUI.this.dispose();
 				new StartingGUI(theRegistry);
+				System.out.println(theRegistry.getListWithoutHome().get(0).getEmail());
 			}
 		}); 
 		btnNewButton.setBounds(98, 395, 106, 23);
@@ -298,22 +299,21 @@ public class NoHomeSignUpGUI extends JFrame {
 		txtpnPassword.setBounds(10, 131, 70, 20);
 		getContentPane().add(txtpnPassword);
 		
-		textFieldPass = new JTextField();
-		textFieldPass.setColumns(10);
-		textFieldPass.setBounds(109, 131, 106, 20);
-		getContentPane().add(textFieldPass);
-		
 		JTextPane txtpnAge = new JTextPane();
 		txtpnAge.setText("Age:");
 		txtpnAge.setEditable(false);
 		txtpnAge.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnAge.setBounds(10, 100, 30, 20);
+		txtpnAge.setBounds(10, 162, 30, 20);
 		getContentPane().add(txtpnAge);
 		
 		textFieldAge = new JTextField();
 		textFieldAge.setColumns(10);
-		textFieldAge.setBounds(109, 100, 106, 20);
+		textFieldAge.setBounds(109, 162, 106, 20);
 		getContentPane().add(textFieldAge);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(109, 131, 108, 20);
+		getContentPane().add(passwordField);
 		
 		
 		

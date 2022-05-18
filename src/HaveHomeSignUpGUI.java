@@ -1,42 +1,45 @@
-import java.awt.Color;
+
+import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.SystemColor;
+import javax.swing.JPasswordField;
 
 public class HaveHomeSignUpGUI extends JFrame {
 	private Registry theRegistry;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
+	private JTextField textFieldName;
+	private JTextField textFieldSurname;
+	private JTextField textFieldAge;
+	private JTextField textFieldMail;
+	private JTextField textFieldPhone;
+	private JTextField textFieldLang;
+	private JTextField textFieldCity;
+	private JTextField textFieldAddress;
+	private JTextField textFieldSize;
+	private JTextField textFieldFloor;
+	private JTextField textFieldHeat;
+	private JTextField textFieldBRooms;
+	private JTextField textFieldRent;
+	private JPasswordField passwordField;
 	
 	public HaveHomeSignUpGUI(Registry aRegistry) {
+		theRegistry = aRegistry;
 		getContentPane().setBackground(UIManager.getColor("List.selectionBackground"));
 		setResizable(false);
 		setTitle("Create Profile");
@@ -72,21 +75,21 @@ public class HaveHomeSignUpGUI extends JFrame {
 		txtpnGender.setText("Gender:");
 		txtpnGender.setEditable(false);
 		txtpnGender.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnGender.setBounds(10, 104, 90, 20);
+		txtpnGender.setBounds(12, 259, 90, 20);
 		getContentPane().add(txtpnGender);
 		
 		JTextPane txtpnAge = new JTextPane();
 		txtpnAge.setText("Age");
 		txtpnAge.setEditable(false);
 		txtpnAge.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnAge.setBounds(10, 135, 90, 20);
+		txtpnAge.setBounds(12, 166, 90, 20);
 		getContentPane().add(txtpnAge);
 		
 		JTextPane txtpnEmail = new JTextPane();
 		txtpnEmail.setText("Email:");
 		txtpnEmail.setEditable(false);
 		txtpnEmail.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnEmail.setBounds(10, 166, 90, 20);
+		txtpnEmail.setBounds(12, 104, 90, 20);
 		getContentPane().add(txtpnEmail);
 		
 		JTextPane txtpnPhone = new JTextPane();
@@ -107,91 +110,91 @@ public class HaveHomeSignUpGUI extends JFrame {
 		txtpnPet.setText("Pet:");
 		txtpnPet.setEditable(false);
 		txtpnPet.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnPet.setBounds(10, 259, 72, 20);
+		txtpnPet.setBounds(10, 286, 72, 20);
 		getContentPane().add(txtpnPet);
 		
 		JTextPane txtpnSmoker = new JTextPane();
 		txtpnSmoker.setText("Smoker:");
 		txtpnSmoker.setEditable(false);
 		txtpnSmoker.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnSmoker.setBounds(10, 290, 101, 20);
+		txtpnSmoker.setBounds(10, 317, 101, 20);
 		getContentPane().add(txtpnSmoker);
 		
 		JTextPane txtpnWorking = new JTextPane();
 		txtpnWorking.setText("Working");
 		txtpnWorking.setEditable(false);
 		txtpnWorking.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnWorking.setBounds(12, 321, 90, 20);
+		txtpnWorking.setBounds(12, 348, 90, 20);
 		getContentPane().add(txtpnWorking);
 		
-		textField = new JTextField();
-		textField.setBounds(129, 42, 126, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldName = new JTextField();
+		textFieldName.setBounds(129, 42, 126, 20);
+		getContentPane().add(textFieldName);
+		textFieldName.setColumns(10);
 		
-		textField_1 = new JTextField();				//ta textField einai ta koutakia opou o xristis mpori na pliktrologisi dipla apo ta stoixia pou tou zita
-		textField_1.setColumns(10);
-		textField_1.setBounds(129, 73, 126, 20);
-		getContentPane().add(textField_1);
+		textFieldSurname = new JTextField();				//ta textField einai ta koutakia opou o xristis mpori na pliktrologisi dipla apo ta stoixia pou tou zita
+		textFieldSurname.setColumns(10);
+		textFieldSurname.setBounds(129, 73, 126, 20);
+		getContentPane().add(textFieldSurname);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(129, 135, 126, 20);
-		getContentPane().add(textField_2);
+		textFieldAge = new JTextField();
+		textFieldAge.setColumns(10);
+		textFieldAge.setBounds(129, 166, 126, 20);
+		getContentPane().add(textFieldAge);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(129, 166, 126, 20);
-		getContentPane().add(textField_3);
+		textFieldMail = new JTextField();
+		textFieldMail.setColumns(10);
+		textFieldMail.setBounds(129, 104, 126, 20);
+		getContentPane().add(textFieldMail);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(129, 197, 126, 20);
-		getContentPane().add(textField_4);
+		textFieldPhone = new JTextField();
+		textFieldPhone.setColumns(10);
+		textFieldPhone.setBounds(129, 197, 126, 20);
+		getContentPane().add(textFieldPhone);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(129, 228, 126, 20);
-		getContentPane().add(textField_5);
+		textFieldLang = new JTextField();
+		textFieldLang.setColumns(10);
+		textFieldLang.setBounds(129, 228, 126, 20);
+		getContentPane().add(textFieldLang);
 		//JRadioButton einai ta koutakia epilogis stin simplirosi stoixion
 		JRadioButton rdbtnMale = new JRadioButton("Male");				
 		rdbtnMale.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnMale.setBounds(122, 104, 72, 23);
+		rdbtnMale.setBounds(122, 256, 72, 23);
 		getContentPane().add(rdbtnMale);
 		
 		JRadioButton rdbtnFemale = new JRadioButton("Female");
 		rdbtnFemale.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnFemale.setBounds(221, 104, 72, 23);
+		rdbtnFemale.setBounds(221, 256, 72, 23);
 		getContentPane().add(rdbtnFemale);
 		
 		JRadioButton rdbtnPetYes = new JRadioButton("Yes");
 		rdbtnPetYes.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnPetYes.setBounds(122, 259, 72, 23);
+		rdbtnPetYes.setBounds(122, 286, 72, 23);
 		getContentPane().add(rdbtnPetYes);
 		
 		JRadioButton rdbtnPetNo = new JRadioButton("No");
 		rdbtnPetNo.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnPetNo.setBounds(221, 259, 72, 23);
+		rdbtnPetNo.setBounds(221, 286, 72, 23);
 		getContentPane().add(rdbtnPetNo);
 		
 		JRadioButton rdbtnSmokingYes = new JRadioButton("Yes");
 		rdbtnSmokingYes.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnSmokingYes.setBounds(122, 290, 72, 23);
+		rdbtnSmokingYes.setBounds(122, 317, 72, 23);
 		getContentPane().add(rdbtnSmokingYes);
 		
 		JRadioButton rdbtnSmokingNo = new JRadioButton("No");
 		rdbtnSmokingNo.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnSmokingNo.setBounds(221, 290, 72, 23);
+		rdbtnSmokingNo.setBounds(221, 317, 72, 23);
 		getContentPane().add(rdbtnSmokingNo);
 		
 		JRadioButton rdbtnEmployed = new JRadioButton("Employed");
 		rdbtnEmployed.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnEmployed.setBounds(122, 318, 72, 23);
+		rdbtnEmployed.setBounds(122, 345, 72, 23);
 		getContentPane().add(rdbtnEmployed);
 		
 		JRadioButton rdbtnUnemployed = new JRadioButton("Unemployed");
 		rdbtnUnemployed.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnUnemployed.setBounds(221, 316, 90, 23);
+		rdbtnUnemployed.setBounds(221, 343, 90, 23);
 		getContentPane().add(rdbtnUnemployed);
 		
 		//Personal Info Radio Buttons Listeners
@@ -267,110 +270,110 @@ public class HaveHomeSignUpGUI extends JFrame {
 		});
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(12, 346, 395, 2);
+		separator.setBounds(12, 373, 395, 2);
 		getContentPane().add(separator);
 		
 		JTextPane txtpnAddress = new JTextPane();
 		txtpnAddress.setText("City:");
 		txtpnAddress.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnAddress.setBounds(12, 390, 80, 20);
+		txtpnAddress.setBounds(12, 417, 80, 20);
 		getContentPane().add(txtpnAddress);
 		
 		JTextPane txtpnCity = new JTextPane();
 		txtpnCity.setText("Address:");
 		txtpnCity.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnCity.setBounds(12, 421, 90, 20);
+		txtpnCity.setBounds(12, 448, 90, 20);
 		getContentPane().add(txtpnCity);
 		
 		JTextPane txtpnPet_1 = new JTextPane();
 		txtpnPet_1.setText("Size(s.m):");
 		txtpnPet_1.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnPet_1.setBounds(12, 452, 90, 20);
+		txtpnPet_1.setBounds(12, 479, 90, 20);
 		getContentPane().add(txtpnPet_1);
 		
 		JTextPane txtpnHeating = new JTextPane();
 		txtpnHeating.setText("Floor:");
 		txtpnHeating.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnHeating.setBounds(12, 483, 90, 20);
+		txtpnHeating.setBounds(12, 510, 90, 20);
 		getContentPane().add(txtpnHeating);
 		
 		JTextPane txtpnPet_2 = new JTextPane();
 		txtpnPet_2.setText("Heating:");
 		txtpnPet_2.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnPet_2.setBounds(12, 514, 80, 20);
+		txtpnPet_2.setBounds(12, 541, 80, 20);
 		getContentPane().add(txtpnPet_2);
 		
 		JTextPane txtpnPet_3 = new JTextPane();
 		txtpnPet_3.setText("Pet:");
 		txtpnPet_3.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnPet_3.setBounds(12, 545, 72, 20);
+		txtpnPet_3.setBounds(12, 572, 72, 20);
 		getContentPane().add(txtpnPet_3);
 		
 		JTextPane txtpnRent = new JTextPane();
 		txtpnRent.setText("Rent:");
 		txtpnRent.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnRent.setBounds(12, 605, 95, 20);
+		txtpnRent.setBounds(12, 632, 95, 20);
 		getContentPane().add(txtpnRent);
 		
 		JTextPane txtpnCity_1 = new JTextPane();
 		txtpnCity_1.setText("House information:");
 		txtpnCity_1.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnCity_1.setBounds(12, 352, 144, 20);
+		txtpnCity_1.setBounds(12, 379, 144, 20);
 		getContentPane().add(txtpnCity_1);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(12, 380, 395, 2);
+		separator_1.setBounds(12, 407, 395, 2);
 		getContentPane().add(separator_1);
 		
 		JTextPane txtpnBedrooms = new JTextPane();
 		txtpnBedrooms.setText("Bedrooms:");
 		txtpnBedrooms.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnBedrooms.setBounds(12, 576, 80, 20);
+		txtpnBedrooms.setBounds(12, 603, 80, 20);
 		getContentPane().add(txtpnBedrooms);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(129, 390, 126, 20);
-		getContentPane().add(textField_6);
+		textFieldCity = new JTextField();
+		textFieldCity.setColumns(10);
+		textFieldCity.setBounds(129, 417, 126, 20);
+		getContentPane().add(textFieldCity);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(129, 421, 126, 20);
-		getContentPane().add(textField_7);
+		textFieldAddress = new JTextField();
+		textFieldAddress.setColumns(10);
+		textFieldAddress.setBounds(129, 448, 126, 20);
+		getContentPane().add(textFieldAddress);
 		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(129, 452, 126, 20);
-		getContentPane().add(textField_8);
+		textFieldSize = new JTextField();
+		textFieldSize.setColumns(10);
+		textFieldSize.setBounds(129, 479, 126, 20);
+		getContentPane().add(textFieldSize);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(129, 483, 126, 20);
-		getContentPane().add(textField_9);
+		textFieldFloor = new JTextField();
+		textFieldFloor.setColumns(10);
+		textFieldFloor.setBounds(129, 510, 126, 20);
+		getContentPane().add(textFieldFloor);
 		
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(129, 514, 126, 20);
-		getContentPane().add(textField_10);
+		textFieldHeat = new JTextField();
+		textFieldHeat.setColumns(10);
+		textFieldHeat.setBounds(129, 541, 126, 20);
+		getContentPane().add(textFieldHeat);
 		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		textField_11.setBounds(129, 574, 126, 20);
-		getContentPane().add(textField_11);
+		textFieldBRooms = new JTextField();
+		textFieldBRooms.setColumns(10);
+		textFieldBRooms.setBounds(129, 601, 126, 20);
+		getContentPane().add(textFieldBRooms);
 		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		textField_12.setBounds(129, 605, 126, 20);
-		getContentPane().add(textField_12);
+		textFieldRent = new JTextField();
+		textFieldRent.setColumns(10);
+		textFieldRent.setBounds(129, 632, 126, 20);
+		getContentPane().add(textFieldRent);
 		
 		JRadioButton rdbtnHousePetYes = new JRadioButton("Yes");
 		rdbtnHousePetYes.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnHousePetYes.setBounds(122, 545, 72, 23);
+		rdbtnHousePetYes.setBounds(122, 572, 72, 23);
 		getContentPane().add(rdbtnHousePetYes);
 		
 		JRadioButton rdbtnHousePetNo = new JRadioButton("No");
 		rdbtnHousePetNo.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnHousePetNo.setBounds(221, 545, 72, 23);
+		rdbtnHousePetNo.setBounds(221, 572, 72, 23);
 		getContentPane().add(rdbtnHousePetNo);
 		
 		//House Info Radio Button Listeners
@@ -392,18 +395,66 @@ public class HaveHomeSignUpGUI extends JFrame {
 			}
 		});
 		
-		JButton btnNewButton = new JButton("Create Profile");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton CreateProfileBtn = new JButton("Create Profile");
+		CreateProfileBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//tha prosthethi o idios kodikas me to create button me to noHomeSignUpGUI
+				
+				double rent = Double.parseDouble(textFieldRent.getText());
+				int age = Integer.parseInt(textFieldAge.getText());
+				int houseSize = Integer.parseInt(textFieldSize.getText());
+				int bedrooms = Integer.parseInt(textFieldBRooms.getText());
+				int floor = Integer.parseInt(textFieldFloor.getText());
+				String gender = "";
+				
+				if(rdbtnMale.isSelected()) {
+					gender = rdbtnMale.getText();
+				}
+				
+				else {
+					gender = rdbtnFemale.getText();
+				}
+				
+				Home aHome = new Home(rent, textFieldAddress.getText(), textFieldCity.getText(), rdbtnHousePetYes.isSelected(), textFieldHeat.getText(),
+									 	bedrooms, floor, houseSize);
+				
+				File f = new File("HaveHomeList.ser");
+				try {
+					HaveHome aUser = new HaveHome(textFieldName.getText(),textFieldSurname.getText(),gender,age
+						,textFieldMail.getText(),passwordField.getPassword().toString(), textFieldPhone.getText(),textFieldLang.getText(),
+						rdbtnPetYes.isSelected(),rdbtnSmokingYes.isSelected(),rdbtnEmployed.isSelected(), aHome);
+					
+					
+					theRegistry.addHaveHome(aUser);
+					
+					FileOutputStream fouts = new FileOutputStream(f, false);
+					ObjectOutputStream douts = new ObjectOutputStream(fouts);
+					douts.writeObject(theRegistry.getListWithHome());
+					douts.close();
+				} catch (IOException e1) {
+					
+					e1.printStackTrace();
+				}
+				HaveHomeSignUpGUI.this.dispose();
+				new StartingGUI(theRegistry);
 			}
 		});
-		btnNewButton.setBounds(139, 636, 106, 23);
-		getContentPane().add(btnNewButton);
-		theRegistry = aRegistry;
+		CreateProfileBtn.setBounds(139, 663, 106, 23);
+		getContentPane().add(CreateProfileBtn);
+		
+		JTextPane txtpnPass = new JTextPane();
+		txtpnPass.setText("Password:");
+		txtpnPass.setEditable(false);
+		txtpnPass.setBackground(UIManager.getColor("List.selectionBackground"));
+		txtpnPass.setBounds(12, 136, 90, 20);
+		getContentPane().add(txtpnPass);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(129, 135, 126, 20);
+		getContentPane().add(passwordField);
+		
 		
 		this.setVisible(true);
-		this.setSize(445, 714);
+		this.setSize(445, 740);
 		this.setTitle("User details");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

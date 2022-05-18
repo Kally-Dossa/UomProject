@@ -5,15 +5,17 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
+import javax.swing.JPasswordField;
 
 
 public class StartingGUI extends JFrame {
 	private JTextField textFieldEmail;
-	private JTextField textFieldPass;
 	private Registry theRegistry;
+	private JPasswordField passwordField;
 	
 
 	
@@ -51,30 +53,23 @@ public class StartingGUI extends JFrame {
 		txtpnPassword.setBounds(162, 145, 80, 20);
 		getContentPane().add(txtpnPassword);
 		
-		textFieldPass = new JTextField();
-		textFieldPass.setColumns(10);
-		textFieldPass.setBounds(162, 176, 86, 20);
-		getContentPane().add(textFieldPass);
-		
 		JButton btnSignIn = new JButton("Sign In");
-		/*btnSignIn.addActionListener(new ActionListener() {
+		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String mail = textFieldEmail.getText();
-				String pass = textFieldPass.getText();
-				ArrayList<HaveHome> aList = theRegistry.getListWithHome();					edw prepei na elegxei mail kai pass an einai swsta 
-				ArrayList<NoHome> anotherList = theRegistry.getListWithoutHome();			gia na ton pigainei sto epomeno gui me tous proteinomenous(den exei ginei akoma).
-				boolean found = false;														
-				boolean correct = false;
+				String pass = passwordField.getPassword().toString();
+				User aUser = null;
+				boolean found = false;
 				
-				for(int i=0;i<aList.size();i++) {
-					if(aList.get(i).email==mail) {
-						
-					}
-				}
-				
+				found = theRegistry.verification(aUser,mail, pass);
+				System.out.println(mail + theRegistry.getListWithoutHome().get(0).getEmail());
+				if(found)
+					new SearchingRoomateGUI(aUser, theRegistry);
+				else 
+					 JOptionPane.showMessageDialog(null, "Wrong Password or Email!");
 				
 			}
-		});*/
+		});
 		btnSignIn.setBounds(162, 222, 89, 23);
 		getContentPane().add(btnSignIn);
 		
@@ -90,11 +85,16 @@ public class StartingGUI extends JFrame {
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new WhatAreYouLookingForGUI(theRegistry);
+				StartingGUI.this.dispose();
 			}
 		});
 
 		btnSignUp.setBounds(162, 338, 89, 23);
 		getContentPane().add(btnSignUp);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(162, 176, 86, 20);
+		getContentPane().add(passwordField);
 		
 		this.setVisible(true);
 		this.setSize(450, 447);
