@@ -41,6 +41,7 @@ public class Main {
 			theRegistry.getListWithoutHome().add(noHomeUsers.get(i));			
 		}
 		
+		
 		new StartingGUI(theRegistry);
 	}
 

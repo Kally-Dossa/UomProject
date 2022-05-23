@@ -58,16 +58,34 @@ public class StartingGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String mail = textFieldEmail.getText();
 				String pass = passwordField.getPassword().toString();
-				User aUser = null;
+				boolean flag = false;
 				boolean found = false;
 				
-				found = theRegistry.verification(aUser,mail, pass);
-				System.out.println(mail + theRegistry.getListWithoutHome().get(0).getEmail());
-				if(found)
-					new SearchingRoomateGUI(aUser, theRegistry);
+				found = theRegistry.verification(mail, pass);
+				
+				if(found) {
+					for(int i=0; i<theRegistry.getListWithoutHome().size(); i++) {
+						if(mail.equals(theRegistry.getListWithoutHome().get(i).getEmail())) {
+							flag = true;
+							User aUser = theRegistry.getListWithoutHome().get(i);
+							new SearchingRoomateGUI(aUser,theRegistry);
+						}
+						else continue;
+					}
+					
+					if(!flag) 
+						for(int i=0; i<theRegistry.getListWithHome().size(); i++) {
+							if(mail.equals(theRegistry.getListWithHome().get(i).getEmail())) {
+								User aUser = theRegistry.getListWithHome().get(i);
+								new SearchingRoomateGUI(aUser,theRegistry);
+							}	
+						}	
+				}
+					
 				else 
 					 JOptionPane.showMessageDialog(null, "Wrong Password or Email!");
 				
+				StartingGUI.this.dispose();
 			}
 		});
 		btnSignIn.setBounds(162, 222, 89, 23);

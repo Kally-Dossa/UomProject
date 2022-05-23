@@ -32,8 +32,36 @@ public class Home implements Serializable {
 	
 	
 
-	public Home gethome() {
-		return this;
+	public double getRent() {
+		return rent;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public String getArea() {
+		return area;
+	}
+	
+	public String getHeating() {
+		return typeOfHeating;
+	}
+	
+	public int getBedrooms() {
+		return bedrooms;
+	}
+	
+	public int getFloor() {
+		return floor;
+	}
+	
+	public int getM2() {
+		return m2;
+	}
+	
+	public boolean petAllowed() {
+		return petsAllowed;
 	}
 	
 	

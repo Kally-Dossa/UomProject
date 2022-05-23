@@ -286,7 +286,7 @@ public class NoHomeSignUpGUI extends JFrame {
 				}
 				NoHomeSignUpGUI.this.dispose();
 				new StartingGUI(theRegistry);
-				System.out.println(theRegistry.getListWithoutHome().get(0).getEmail());
+				
 			}
 		}); 
 		btnNewButton.setBounds(98, 395, 106, 23);

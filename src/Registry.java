@@ -26,13 +26,13 @@ public class Registry {
 		return somebodyWithoutHome;
 	}
 	
-	public boolean verification(User aUser, String mail, String pass) {
+	public boolean verification(String mail, String pass) {
 		boolean found = false;
 		for(int i=0; i<somebodyWithoutHome.size(); i++) {
 			if(mail.equals(somebodyWithoutHome.get(i).getEmail())) {
 				found = true;
 				if(pass.equals(somebodyWithoutHome.get(i).getPass())) {
-					aUser = somebodyWithoutHome.get(i);
+					
 					return found;
 				}
 				
@@ -47,7 +47,7 @@ public class Registry {
 				if(mail.equals(somebodyWithHome.get(i).getEmail())) {
 					found = true;
 					if(pass.equals(somebodyWithHome.get(i).getPass())) {
-						aUser = somebodyWithHome.get(i);
+						
 						return found;
 					}
 					
@@ -58,4 +58,6 @@ public class Registry {
 			}
 		return found;
 	}
+	
+	
 }

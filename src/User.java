@@ -8,18 +8,6 @@ public abstract class User implements Serializable{
 	protected boolean pet, smoker, professionalStatus;
 	
 	
-	public User() {
-		name = "";
-		lastName = "";
-		sex = "";
-		email = "";
-		password = "";
-		phoneNum = "";
-		language = "";
-		age = 0;
-		pet = smoker = professionalStatus = false;
-	}
-	
 	public User(String aName, String aLastName, String aSex,int anAge, String anEmail,String pass, String aPhoneNum, String aLanguage,  boolean aPet,
 			boolean aSmoker, boolean aProfessionalStatus) {
 		super();
@@ -34,11 +22,19 @@ public abstract class User implements Serializable{
 		age = anAge;
 		pet = aPet;
 		smoker = aSmoker;
-
+		
 	}
 	
 	public abstract User getUser();
 	public abstract boolean hasHome();
+	
+	public int getAge() {
+		return age;
+	}
+	
+	public boolean hasPet() {
+		return pet;
+	}
 	
 	public String getPass() {
 		return password;
@@ -76,11 +72,6 @@ public abstract class User implements Serializable{
 
 	public boolean getProfessionalStatus() {
 		return professionalStatus;
-	}
-
-
-	public boolean isPet() {
-		return pet;
 	}
 
 
