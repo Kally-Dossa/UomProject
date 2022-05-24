@@ -167,7 +167,7 @@ public class HaveHomeProfileGUI extends JFrame{
 			
 			}
 		});
-		CreateProfileBtn.setBounds(139, 663, 106, 23);
+		CreateProfileBtn.setBounds(149, 710, 106, 23);
 		getContentPane().add(CreateProfileBtn);
 		
 		JPanel panel = new JPanel();
@@ -209,12 +209,15 @@ public class HaveHomeProfileGUI extends JFrame{
 		lblNewLabel_1.setBounds(145, 11, 125, 24);
 		panel.add(lblNewLabel_1);
 		
+		JButton accountSettings = new JButton("Account settings");
+		accountSettings.setBounds(123, 658, 156, 31);
+		getContentPane().add(accountSettings);
+		
 		
 		this.setVisible(true);
-		this.setSize(445, 740);
+		this.setSize(445, 780);
 		this.setTitle("User details");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
-
 }
