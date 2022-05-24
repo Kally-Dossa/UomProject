@@ -104,7 +104,6 @@ public class MyProfilGUI extends JFrame{
 		JButton backToSearch = new JButton("Back To Roomates List");
 		backToSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Kwdikas gia na vriskei ton epilegmeno apo ti lista user kai na anoigei to profil toy
 				dispose();
 				new SearchingRoomateGUI(aUser, registry);
 			}
