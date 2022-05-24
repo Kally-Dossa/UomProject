@@ -12,13 +12,16 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JPasswordField;
 
 public class HaveHomeSignUpGUI extends JFrame {
@@ -438,7 +441,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 				new StartingGUI(theRegistry);
 			}
 		});
-		CreateProfileBtn.setBounds(139, 663, 106, 23);
+		CreateProfileBtn.setBounds(149, 730, 106, 23);
 		getContentPane().add(CreateProfileBtn);
 		
 		JTextPane txtpnPass = new JTextPane();
@@ -452,9 +455,31 @@ public class HaveHomeSignUpGUI extends JFrame {
 		passwordField.setBounds(129, 135, 126, 20);
 		getContentPane().add(passwordField);
 		
+		JButton AddImage = new JButton("Add Image");
+		AddImage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JLabel l = new JLabel();
+			    l.setBounds(10,10,365,290);
+				JFileChooser file = new JFileChooser("File");
+		        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+		        //filtering files
+		        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png");
+
+		        file.addChoosableFileFilter(filter);
+		        int res = file.showSaveDialog(null);
+		        //if the user clicks on save in Jfilechooser
+		        if(res == JFileChooser.APPROVE_OPTION){
+		          File selFile = file.getSelectedFile();
+		          String path = selFile.getAbsolutePath();
+//		          l.setIcon(resize(path));
+		        }
+			}
+		});
+		AddImage.setBounds(149, 684, 106, 21);
+		getContentPane().add(AddImage);
 		
 		this.setVisible(true);
-		this.setSize(445, 740);
+		this.setSize(445, 800);
 		this.setTitle("User details");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

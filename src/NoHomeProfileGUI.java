@@ -21,7 +21,7 @@ import java.awt.Font;
 public class NoHomeProfileGUI extends JFrame {
 
 	
-	public NoHomeProfileGUI(boolean MatchOrNot,User aUser, Registry aRegistry) {
+	public NoHomeProfileGUI(boolean MatchOrNot, User aUser, Registry aRegistry) {
 		User theUser = aUser;
 		Registry theRegistry = aRegistry;
 		setResizable(false);

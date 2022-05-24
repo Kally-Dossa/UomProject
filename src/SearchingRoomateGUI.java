@@ -65,9 +65,15 @@ public class SearchingRoomateGUI extends JFrame {
 		JButton btnNewButton = new JButton("Show Profile");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Kwdikas gia na vriskei ton epilegmeno apo ti lista user kai na anoigei to profil toy
-				dispose();
-				new MyProfilGUI(user, registry);
+				if (registry.IhaveHome(user.getName())) {
+					dispose();
+					HaveHome homeUser = (HaveHome) user.getUser();
+					new HaveHomeProfileGUI(false, homeUser, registry);
+				}
+				if (!registry.IhaveHome(user.getName())) {
+					dispose();
+					new NoHomeProfileGUI(false, user, registry);
+				}
 			}
 		});
 		btnNewButton.setBounds(91, 342, 123, 23);

@@ -59,5 +59,16 @@ public class Registry {
 		return found;
 	}
 	
-	
+	public boolean IhaveHome(String name) {
+		boolean iHave = false;
+		for(int i=0; i<somebodyWithHome.size(); i++) {
+			if(name.equals(somebodyWithHome.get(i).getName())) {
+				iHave = true;
+			}	
+			if(name.equals(somebodyWithoutHome.get(i).getName())) {
+				iHave = false;
+			}
+		}
+		return iHave;
+	}
 }

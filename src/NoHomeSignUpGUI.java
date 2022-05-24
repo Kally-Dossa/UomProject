@@ -5,15 +5,17 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class NoHomeSignUpGUI extends JFrame {
 	private JTextField textFieldName;
@@ -35,7 +37,7 @@ public class NoHomeSignUpGUI extends JFrame {
 		
 			
 		this.setVisible(true);
-		this.setSize(314, 468);
+		this.setSize(314, 500);
 		this.setTitle("User details");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -289,7 +291,7 @@ public class NoHomeSignUpGUI extends JFrame {
 				
 			}
 		}); 
-		btnNewButton.setBounds(98, 395, 106, 23);
+		btnNewButton.setBounds(91, 420, 106, 23);
 		getContentPane().add(btnNewButton);
 		
 		JTextPane txtpnPassword = new JTextPane();
@@ -315,7 +317,28 @@ public class NoHomeSignUpGUI extends JFrame {
 		passwordField.setBounds(109, 131, 108, 20);
 		getContentPane().add(passwordField);
 		
-		
+		JButton AddImage = new JButton("Add Image");
+		AddImage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JLabel l = new JLabel();
+			    l.setBounds(10,10,365,290);
+				JFileChooser file = new JFileChooser("File");
+		        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+		        //filtering files
+		        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png");
+
+		        file.addChoosableFileFilter(filter);
+		        int res = file.showSaveDialog(null);
+		        //if the user clicks on save in Jfilechooser
+		        if(res == JFileChooser.APPROVE_OPTION){
+		          File selFile = file.getSelectedFile();
+		          String path = selFile.getAbsolutePath();
+//		          l.setIcon(resize(path));
+		        }
+			}
+		});
+		AddImage.setBounds(91, 371, 106, 21);
+		getContentPane().add(AddImage);
 		
 	}
 }
