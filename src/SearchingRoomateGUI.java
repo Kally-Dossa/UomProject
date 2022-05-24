@@ -66,6 +66,8 @@ public class SearchingRoomateGUI extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Kwdikas gia na vriskei ton epilegmeno apo ti lista user kai na anoigei to profil toy
+				dispose();
+				new MyProfilGUI(user, registry);
 			}
 		});
 		btnNewButton.setBounds(91, 342, 123, 23);
