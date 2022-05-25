@@ -210,6 +210,11 @@ public class HaveHomeProfileGUI extends JFrame{
 		panel.add(lblNewLabel_1);
 		
 		JButton accountSettings = new JButton("Account settings");
+		accountSettings.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// kwdikas gia allagh stoixeiwn 
+			}
+		});
 		accountSettings.setBounds(123, 658, 156, 31);
 		getContentPane().add(accountSettings);
 		
