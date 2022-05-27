@@ -15,6 +15,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class SearchingRoomateGUI extends JFrame {
 	
@@ -113,11 +114,21 @@ public class SearchingRoomateGUI extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("My matches");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MatchesGUI m=new MatchesGUI(user,registry);
+				m.setVisible(true);
+				SearchingRoomateGUI.this.dispose();
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Delete Account");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// JOptionPane.showMessageDialog(null,"Are you sure you want to delete your account?");
+				 
+				// System.exit(JFrame.EXIT_ON_CLOSE);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 	}
 }
