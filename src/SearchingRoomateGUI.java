@@ -127,6 +127,12 @@ public class SearchingRoomateGUI extends JFrame {
 				// JOptionPane.showMessageDialog(null,"Are you sure you want to delete your account?");
 				 
 				// System.exit(JFrame.EXIT_ON_CLOSE);
+				JFrame frame = new JFrame();
+				if (JOptionPane.showConfirmDialog(frame,"Are you sure you want to delete your account?","Warning!!!",
+						JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION)
+				{
+						// kodikas diagrafis
+				}
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_2);
