@@ -10,6 +10,8 @@ import java.awt.Font;
 import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SearchingRoomateGUI extends JFrame {
 	
@@ -42,6 +44,7 @@ public class SearchingRoomateGUI extends JFrame {
 		getContentPane().add(lblList);
 
 		JList SuggestedList = new JList();
+	
 		SuggestedList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		DefaultListModel listModel = new DefaultListModel();
 		if(user.hasHome()) {
@@ -65,14 +68,29 @@ public class SearchingRoomateGUI extends JFrame {
 		JButton btnNewButton = new JButton("Show Profile");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (registry.IhaveHome(user.getName())) {
-					dispose();
-					HaveHome homeUser = (HaveHome) user.getUser();
-					new HaveHomeProfileGUI(false, homeUser, registry);
+				String userName = "";
+				if(user.hasHome()) {
+					for(int i=0; i<theRegistry.getListWithoutHome().size(); i++) {
+						userName = theRegistry.getListWithoutHome().get(i).getName() + " " + theRegistry.getListWithoutHome().get(i).getLastName();
+						
+						if(userName.equals(SuggestedList.getSelectedValue())) {
+							new NoHomeProfileGUI(false, theRegistry.getListWithoutHome().get(i),theRegistry);
+						}
+						
+						else continue;
+					}
 				}
-				if (!registry.IhaveHome(user.getName())) {
-					dispose();
-					new NoHomeProfileGUI(false, user, registry);
+				
+				else {
+					for(int i=0; i<theRegistry.getListWithHome().size(); i++) {
+						userName = theRegistry.getListWithHome().get(i).getName() + " " + theRegistry.getListWithHome().get(i).getLastName();
+						
+						if(userName.equals(SuggestedList.getSelectedValue())) {
+							new HaveHomeProfileGUI(false, theRegistry.getListWithHome().get(i),theRegistry);
+						}
+						
+						else continue;
+					}
 				}
 			}
 		});

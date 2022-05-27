@@ -163,7 +163,7 @@ public class HaveHomeProfileGUI extends JFrame{
 		JButton CreateProfileBtn = new JButton("<Back");
 		CreateProfileBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new SearchingRoomateGUI(theUser,theRegistry);
+				dispose();
 			
 			}
 		});

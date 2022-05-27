@@ -73,6 +73,7 @@ public class StartingGUI extends JFrame {
 							flag = true;
 							User aUser = theRegistry.getListWithoutHome().get(i);
 							new SearchingRoomateGUI(aUser,theRegistry);
+							StartingGUI.this.dispose();
 						}
 						else continue;
 					}
@@ -82,6 +83,7 @@ public class StartingGUI extends JFrame {
 							if(mail.equals(theRegistry.getListWithHome().get(i).getEmail())) {
 								User aUser = theRegistry.getListWithHome().get(i);
 								new SearchingRoomateGUI(aUser,theRegistry);
+								StartingGUI.this.dispose();
 							}	
 						}	
 				}
@@ -89,7 +91,7 @@ public class StartingGUI extends JFrame {
 				else 
 					 JOptionPane.showMessageDialog(null, "Wrong Password or Email!");
 				
-				StartingGUI.this.dispose();
+				
 			}
 		});
 		btnSignIn.setBounds(162, 222, 89, 23);

@@ -137,7 +137,7 @@ public class NoHomeProfileGUI extends JFrame {
 		JButton btnNewButton = new JButton("<Back");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new SearchingRoomateGUI(theUser, theRegistry);
+				dispose();
 			}
 		});
 		btnNewButton.setBounds(102, 389, 79, 23);
