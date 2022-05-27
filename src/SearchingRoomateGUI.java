@@ -12,6 +12,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class SearchingRoomateGUI extends JFrame {
 	
@@ -26,10 +29,6 @@ public class SearchingRoomateGUI extends JFrame {
 		getContentPane().setBackground(UIManager.getColor("List.selectionBackground"));
 		setTitle("Room8");
 		getContentPane().setLayout(null);
-		
-		JButton btnMatches = new JButton("Matches");
-		btnMatches.setBounds(175, 12, 89, 23);
-		getContentPane().add(btnMatches);
 		
 		JLabel lblHello = new JLabel("Hello "+user.getName()+"!");
 		lblHello.setFont(new Font("Times New Roman", Font.ITALIC, 14));
@@ -101,5 +100,24 @@ public class SearchingRoomateGUI extends JFrame {
 		this.setSize(330, 459);
 		this.setTitle("Room8");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("Menu");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("My Profile");
+		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("My matches");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Delete Account");
+		mnNewMenu.add(mntmNewMenuItem_2);
 	}
 }
