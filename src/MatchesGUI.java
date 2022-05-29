@@ -76,5 +76,14 @@ public class MatchesGUI extends JFrame {
 		});
 		btnNewButton.setBounds(91, 342, 123, 23);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("<Back");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNewButton_1.setBounds(10, 343, 71, 23);
+		contentPane.add(btnNewButton_1);
 	}
 }
