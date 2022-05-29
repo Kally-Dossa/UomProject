@@ -157,12 +157,19 @@ public class NoHomeProfileGUI extends JFrame {
 						 }
 						 
 					 }
+					 // ελεγχος
+					 for(User current:searcher.myLikes) {
+						 System.out.println(current.name+" likes "+ searcher.myLikes.size());
+					 }
+					 for(User current:searcher.myMatches) {
+						 System.out.println(current.name+"matches");
+					 }
 				 }
 				 else {
 					 for(User current:searcher.myLikes) {
 						 if(current.equals(possibleRoomate)) {
-							 current.myLikes.remove(possibleRoomate);
-						 }
+							 current.myLikes.remove(current);
+							 System.out.println("removed"+searcher.myLikes.size());						 }
 					 }
 					 for(User current:searcher.myMatches) {
 						 if(current.equals(possibleRoomate)) {

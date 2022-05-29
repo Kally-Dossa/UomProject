@@ -124,14 +124,27 @@ public class SearchingRoomateGUI extends JFrame {
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Delete Account");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// JOptionPane.showMessageDialog(null,"Are you sure you want to delete your account?");
-				 
-				// System.exit(JFrame.EXIT_ON_CLOSE);
+
 				JFrame frame = new JFrame();
 				if (JOptionPane.showConfirmDialog(frame,"Are you sure you want to delete your account?","Warning!!!",
 						JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION)
 				{
-						// kodikas diagrafis
+						if(user.hasHome()) {
+							for(User current:registry.getListWithHome()) {
+								if(current.equals(user)) {
+									registry.getListWithHome().remove(user);
+									System.exit(0);
+								}
+							}
+						}
+						else {
+							for(User current:registry.getListWithoutHome()) {
+								if(current.equals(user)) {
+									registry.getListWithoutHome().remove(user);
+									System.exit(0);
+								}
+							}
+						}
 				}
 			}
 		});
