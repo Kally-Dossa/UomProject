@@ -74,7 +74,7 @@ public class SearchingRoomateGUI extends JFrame {
 						userName = theRegistry.getListWithoutHome().get(i).getName() + " " + theRegistry.getListWithoutHome().get(i).getLastName();
 						
 						if(userName.equals(SuggestedList.getSelectedValue())) {
-							new NoHomeProfileGUI(false, theRegistry.getListWithoutHome().get(i),theRegistry);
+							new NoHomeProfileGUI(user,false, theRegistry.getListWithoutHome().get(i),theRegistry);
 						}
 						
 						else continue;
@@ -86,7 +86,7 @@ public class SearchingRoomateGUI extends JFrame {
 						userName = theRegistry.getListWithHome().get(i).getName() + " " + theRegistry.getListWithHome().get(i).getLastName();
 						
 						if(userName.equals(SuggestedList.getSelectedValue())) {
-							new HaveHomeProfileGUI(false, theRegistry.getListWithHome().get(i),theRegistry);
+							new HaveHomeProfileGUI(user,false, theRegistry.getListWithHome().get(i),theRegistry);
 						}
 						
 						else continue;

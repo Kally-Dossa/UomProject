@@ -17,12 +17,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import java.awt.Font;
+import javax.swing.JToggleButton;
 
 public class NoHomeProfileGUI extends JFrame {
 
 	
-	public NoHomeProfileGUI(boolean MatchOrNot, User aUser, Registry aRegistry) {
-		User theUser = aUser;
+	public NoHomeProfileGUI(User searchingUser,boolean MatchOrNot, User aUser, Registry aRegistry) {
+		User possibleRoomate = aUser;
+		User searcher =searchingUser;
 		Registry theRegistry = aRegistry;
 		setResizable(false);
 		getContentPane().setBackground(UIManager.getColor("List.selectionBackground"));
@@ -142,6 +144,41 @@ public class NoHomeProfileGUI extends JFrame {
 		});
 		btnNewButton.setBounds(102, 389, 79, 23);
 		getContentPane().add(btnNewButton);
+		
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("Like");
+		tglbtnNewToggleButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (tglbtnNewToggleButton.isSelected()) {
+					 searcher.myLikes.add(possibleRoomate);
+					 for(User current:possibleRoomate.myLikes) {
+						 if(current.equals(searcher)) {
+							 searcher.myMatches.add(possibleRoomate);
+							 possibleRoomate.myMatches.add(searcher);
+						 }
+						 
+					 }
+				 }
+				 else {
+					 for(User current:searcher.myLikes) {
+						 if(current.equals(possibleRoomate)) {
+							 current.myLikes.remove(possibleRoomate);
+						 }
+					 }
+					 for(User current:searcher.myMatches) {
+						 if(current.equals(possibleRoomate)) {
+							 current.myMatches.remove(possibleRoomate);
+						 }
+					 }
+					 for(User current:possibleRoomate.myMatches) {
+						 if(current.equals(searcher)) {
+							 current.myMatches.remove(searcher);
+						 }
+					 }
+				 }
+			}
+		});
+		tglbtnNewToggleButton.setBounds(195, 388, 93, 25);
+		getContentPane().add(tglbtnNewToggleButton);
 		
 	}
 }

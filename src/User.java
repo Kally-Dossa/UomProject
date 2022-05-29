@@ -6,6 +6,8 @@ public abstract class User implements Serializable{
 	protected String name, lastName, sex, email, password, phoneNum, language;
 	protected int age;
 	protected boolean pet, smoker, professionalStatus;
+	protected ArrayList<User> myLikes = new ArrayList<>();
+	protected ArrayList<User> myMatches = new ArrayList<>();
 	
 	
 	public User(String aName, String aLastName, String aSex,int anAge, String anEmail,String pass, String aPhoneNum, String aLanguage,  boolean aPet,

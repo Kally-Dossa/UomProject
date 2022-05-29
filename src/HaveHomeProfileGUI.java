@@ -17,13 +17,15 @@ import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JToggleButton;
 
 public class HaveHomeProfileGUI extends JFrame{
 	
 	
-	public HaveHomeProfileGUI(boolean MatchOrNot, HaveHome aUser, Registry aRegistry) {
+	public HaveHomeProfileGUI(User searchingUser,boolean MatchOrNot, HaveHome aUser, Registry aRegistry) {
 		Registry theRegistry = aRegistry;
-		User theUser = aUser;
+		User searcher =searchingUser;
+		User possibleRoomate = aUser;
 		getContentPane().setBackground(UIManager.getColor("List.selectionBackground"));
 		setResizable(false);
 		setTitle("Create Profile");
@@ -209,14 +211,41 @@ public class HaveHomeProfileGUI extends JFrame{
 		lblNewLabel_1.setBounds(145, 11, 125, 24);
 		panel.add(lblNewLabel_1);
 		
-		JButton accountSettings = new JButton("Account settings");
-		accountSettings.addActionListener(new ActionListener() {
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("Like");
+		tglbtnNewToggleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// kwdikas gia allagh stoixeiwn 
+				 if (tglbtnNewToggleButton.isSelected()) {
+					 searcher.myLikes.add(possibleRoomate);
+					 for(User current:possibleRoomate.myLikes) {
+						 if(current.equals(searcher)) {
+							 searcher.myMatches.add(possibleRoomate);
+							 possibleRoomate.myMatches.add(searcher);
+						 }
+						 
+					 }
+				 }
+				 else {
+					 for(User current:searcher.myLikes) {
+						 if(current.equals(possibleRoomate)) {
+							 current.myLikes.remove(possibleRoomate);
+						 }
+					 }
+					 for(User current:searcher.myMatches) {
+						 if(current.equals(possibleRoomate)) {
+							 current.myMatches.remove(possibleRoomate);
+						 }
+					 }
+					 for(User current:possibleRoomate.myMatches) {
+						 if(current.equals(searcher)) {
+							 current.myMatches.remove(searcher);
+						 }
+					 }
+				 }
+				 
 			}
 		});
-		accountSettings.setBounds(123, 658, 156, 31);
-		getContentPane().add(accountSettings);
+		tglbtnNewToggleButton.setBounds(294, 711, 115, 21);
+		getContentPane().add(tglbtnNewToggleButton);
 		
 		
 		this.setVisible(true);
