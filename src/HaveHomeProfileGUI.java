@@ -214,7 +214,13 @@ public class HaveHomeProfileGUI extends JFrame{
 		JToggleButton tglbtnNewToggleButton = new JToggleButton("Like");
 		tglbtnNewToggleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 if (tglbtnNewToggleButton.isSelected()) {
+				for(User current:searcher.myLikes) {
+					if(current.equals(possibleRoomate)) {
+						tglbtnNewToggleButton.setSelected(false);
+					}
+					
+				}
+				if (tglbtnNewToggleButton.isSelected()) {
 					 searcher.myLikes.add(possibleRoomate);
 					 for(User current:possibleRoomate.myLikes) {
 						 if(current.equals(searcher)) {
@@ -222,6 +228,13 @@ public class HaveHomeProfileGUI extends JFrame{
 							 possibleRoomate.myMatches.add(searcher);
 						 }
 						 
+					 }
+					// ελεγχος
+					 for(User current:searcher.myLikes) {
+						 System.out.println(current.name+" likes "+ searcher.myLikes.size());
+					 }
+					 for(User current:searcher.myMatches) {
+						 System.out.println(current.name+"matches");
 					 }
 				 }
 				 else {
