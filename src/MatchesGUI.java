@@ -83,6 +83,7 @@ public class MatchesGUI extends JFrame {
 				dispose();
 			}
 		});
+		
 		btnNewButton_1.setBounds(10, 343, 71, 23);
 		contentPane.add(btnNewButton_1);
 	}
