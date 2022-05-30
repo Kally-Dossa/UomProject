@@ -11,6 +11,7 @@ import java.awt.SystemColor;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -54,9 +55,9 @@ public class MatchesGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Matching with");
+		JLabel lblNewLabel = new JLabel("Matching with:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel.setBounds(39, 47, 90, 29);
+		lblNewLabel.setBounds(39, 47, 90, 23);
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -65,6 +66,11 @@ public class MatchesGUI extends JFrame {
 		
 		JList list = new JList();
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		DefaultListModel listModel = new DefaultListModel();
+		for(int i=0; i<user.getMyMatches().size(); i++) {
+			listModel.addElement(user.getMyMatches().get(i).getName() + " " + user.getMyMatches().get(i).getLastName());
+		}
+		list.setModel(listModel);
 		scrollPane.setViewportView(list);
 		
 		
@@ -74,17 +80,18 @@ public class MatchesGUI extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(91, 342, 123, 23);
+		btnNewButton.setBounds(97, 332, 111, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("<Back");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				SearchingRoomateGUI a = new SearchingRoomateGUI(user,registry);
 				dispose();
 			}
 		});
 		
-		btnNewButton_1.setBounds(10, 343, 71, 23);
+		btnNewButton_1.setBounds(201, 408, 71, 23);
 		contentPane.add(btnNewButton_1);
 	}
 }

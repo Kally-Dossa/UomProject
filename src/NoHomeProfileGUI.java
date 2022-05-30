@@ -1,23 +1,17 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.UIManager;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-import java.awt.Font;
+import javax.swing.JTextPane;
 import javax.swing.JToggleButton;
+import javax.swing.UIManager;
 
 public class NoHomeProfileGUI extends JFrame {
 
@@ -142,15 +136,15 @@ public class NoHomeProfileGUI extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(102, 389, 79, 23);
+		btnNewButton.setBounds(139, 377, 79, 23);
 		getContentPane().add(btnNewButton);
 		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("Like");
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("");
 		tglbtnNewToggleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for(User current:searcher.myLikes) {
 					if(current.equals(possibleRoomate)) {
-						tglbtnNewToggleButton.setSelected(false);
+						//tglbtnNewToggleButton.setSelected(false);
 					}
 					
 				}
@@ -190,8 +184,14 @@ public class NoHomeProfileGUI extends JFrame {
 				 }
 			}
 		});
-		tglbtnNewToggleButton.setBounds(195, 388, 93, 25);
+		tglbtnNewToggleButton.setBounds(228, 364, 48, 48);
 		getContentPane().add(tglbtnNewToggleButton);
+		
+		
+		Image img = new ImageIcon(this.getClass().getResource("/like_icon.png")).getImage();
+		tglbtnNewToggleButton.setIcon(new ImageIcon(img));
+		
+		
 		
 	}
 }

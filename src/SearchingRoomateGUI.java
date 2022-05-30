@@ -16,6 +16,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JSeparator;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import javax.swing.JRadioButton;
 
 public class SearchingRoomateGUI extends JFrame {
 	
@@ -40,12 +44,11 @@ public class SearchingRoomateGUI extends JFrame {
 		JLabel lblList = new JLabel("Suggested roomates list:");
 		lblList.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblList.setBackground(UIManager.getColor("List.selectionBackground"));
-		lblList.setBounds(39, 47, 164, 14);
+		lblList.setBounds(193, 58, 164, 14);
 		getContentPane().add(lblList);
-
-		JList SuggestedList = new JList();
-	
-		SuggestedList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		JList suggestedList = new JList();
+		suggestedList.setBounds(202, 94, 207, 236);
+		getContentPane().add(suggestedList);
 		DefaultListModel listModel = new DefaultListModel();
 		if(user.hasHome()) {
 			for(int i=0; i<theRegistry.getListWithoutHome().size(); i++) {
@@ -58,12 +61,7 @@ public class SearchingRoomateGUI extends JFrame {
 				listModel.addElement(theRegistry.getListWithHome().get(i).getName() +" "+ theRegistry.getListWithHome().get(i).getLastName());
 			}
 		}
-		SuggestedList.setModel(listModel);
-
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(42, 82, 222, 249);
-		getContentPane().add(scrollPane);
-		scrollPane.setViewportView(SuggestedList);
+		suggestedList.setModel(listModel);
 		
 		JButton btnNewButton = new JButton("Show Profile");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -73,7 +71,7 @@ public class SearchingRoomateGUI extends JFrame {
 					for(int i=0; i<theRegistry.getListWithoutHome().size(); i++) {
 						userName = theRegistry.getListWithoutHome().get(i).getName() + " " + theRegistry.getListWithoutHome().get(i).getLastName();
 						
-						if(userName.equals(SuggestedList.getSelectedValue())) {
+						if(userName.equals(suggestedList.getSelectedValue())) {
 							new NoHomeProfileGUI(user,false, theRegistry.getListWithoutHome().get(i),theRegistry);
 						}
 						
@@ -85,7 +83,7 @@ public class SearchingRoomateGUI extends JFrame {
 					for(int i=0; i<theRegistry.getListWithHome().size(); i++) {
 						userName = theRegistry.getListWithHome().get(i).getName() + " " + theRegistry.getListWithHome().get(i).getLastName();
 						
-						if(userName.equals(SuggestedList.getSelectedValue())) {
+						if(userName.equals(suggestedList.getSelectedValue())) {
 							new HaveHomeProfileGUI(user,false, theRegistry.getListWithHome().get(i),theRegistry);
 						}
 						
@@ -94,11 +92,44 @@ public class SearchingRoomateGUI extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(91, 342, 123, 23);
+		btnNewButton.setBounds(247, 341, 113, 23);
 		getContentPane().add(btnNewButton);
 		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBackground(Color.WHITE);
+		separator.setBounds(170, 59, 1, 271);
+		getContentPane().add(separator);
+		
+		JLabel lblNewLabel = new JLabel("Filters:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel.setBounds(22, 81, 55, 14);
+		getContentPane().add(lblNewLabel);
+		
+		JRadioButton rdbtnMale = new JRadioButton("Male");
+		rdbtnMale.setBackground(UIManager.getColor("List.selectionBackground"));
+		rdbtnMale.setBounds(6, 111, 55, 23);
+		getContentPane().add(rdbtnMale);
+		
+		JRadioButton rdbtnFemale = new JRadioButton("Female");
+		rdbtnFemale.setBackground(UIManager.getColor("List.selectionBackground"));
+		rdbtnFemale.setBounds(66, 111, 68, 23);
+		getContentPane().add(rdbtnFemale);
+		
+		JRadioButton rdbtnSmoker = new JRadioButton("Smoker");
+		rdbtnSmoker.setBackground(UIManager.getColor("List.selectionBackground"));
+		rdbtnSmoker.setBounds(6, 137, 71, 23);
+		getContentPane().add(rdbtnSmoker);
+		
+		JRadioButton rdbtnPet = new JRadioButton("Pet");
+		rdbtnPet.setBackground(UIManager.getColor("List.selectionBackground"));
+		rdbtnPet.setBounds(6, 163, 55, 23);
+		getContentPane().add(rdbtnPet);
+		
+		
+		
 		this.setVisible(true);
-		this.setSize(330, 459);
+		this.setSize(477, 475);
 		this.setTitle("Room8");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -116,7 +147,7 @@ public class SearchingRoomateGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MatchesGUI m=new MatchesGUI(user,registry);
 				m.setVisible(true);
-				SearchingRoomateGUI.this.dispose();
+				dispose();
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);

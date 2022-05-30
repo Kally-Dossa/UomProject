@@ -29,7 +29,9 @@ public abstract class User implements Serializable{
 	
 	public abstract User getUser();
 	public abstract boolean hasHome();
-	
+	public ArrayList<User> getMyMatches(){
+		return myMatches;
+	}
 	public int getAge() {
 		return age;
 	}

@@ -1,4 +1,5 @@
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -6,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPasswordField;
@@ -211,7 +213,7 @@ public class HaveHomeProfileGUI extends JFrame{
 		lblNewLabel_1.setBounds(145, 11, 125, 24);
 		panel.add(lblNewLabel_1);
 		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("Like");
+		JToggleButton tglbtnNewToggleButton = new JToggleButton();
 		tglbtnNewToggleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for(User current:searcher.myLikes) {
@@ -257,7 +259,9 @@ public class HaveHomeProfileGUI extends JFrame{
 				 
 			}
 		});
-		tglbtnNewToggleButton.setBounds(294, 711, 115, 21);
+		tglbtnNewToggleButton.setBounds(294, 711, 48, 48);
+		Image img = new ImageIcon(this.getClass().getResource("/like_icon.png")).getImage();
+		tglbtnNewToggleButton.setIcon(new ImageIcon(img));
 		getContentPane().add(tglbtnNewToggleButton);
 		
 		
