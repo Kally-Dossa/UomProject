@@ -171,7 +171,7 @@ public class HaveHomeProfileGUI extends JFrame{
 			
 			}
 		});
-		CreateProfileBtn.setBounds(149, 710, 106, 23);
+		CreateProfileBtn.setBounds(245, 707, 106, 23);
 		getContentPane().add(CreateProfileBtn);
 		
 		JPanel panel = new JPanel();
@@ -259,7 +259,7 @@ public class HaveHomeProfileGUI extends JFrame{
 				 
 			}
 		});
-		tglbtnNewToggleButton.setBounds(294, 711, 48, 48);
+		tglbtnNewToggleButton.setBounds(361, 682, 48, 48);
 		Image img = new ImageIcon(this.getClass().getResource("/like_icon.png")).getImage();
 		tglbtnNewToggleButton.setIcon(new ImageIcon(img));
 		getContentPane().add(tglbtnNewToggleButton);

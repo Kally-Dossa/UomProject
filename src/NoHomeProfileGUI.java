@@ -136,7 +136,7 @@ public class NoHomeProfileGUI extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(139, 377, 79, 23);
+		btnNewButton.setBounds(138, 389, 79, 23);
 		getContentPane().add(btnNewButton);
 		
 		JToggleButton tglbtnNewToggleButton = new JToggleButton("");
