@@ -23,7 +23,6 @@ public class HaveHome extends User implements Serializable{
 		return myHome;
 	}
 	public boolean hasHome() {
-		
 		return true;
 	}
 

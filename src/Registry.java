@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Registry {
 	private ArrayList<HaveHome> somebodyWithHome;
@@ -59,16 +59,64 @@ public class Registry {
 		return found;
 	}
 	
-	public boolean IhaveHome(String name) {
-		boolean iHave = false;
-		for(int i=0; i<somebodyWithHome.size(); i++) {
-			if(name.equals(somebodyWithHome.get(i).getName())) {
-				iHave = true;
-			}	
-			if(name.equals(somebodyWithoutHome.get(i).getName())) {
-				iHave = false;
-			}
+	public ArrayList<User> ListFiltering(boolean hasHome,boolean male, boolean female, 
+			boolean smoker, boolean no_smoker, boolean with_pet, boolean without_pet ) {
+		
+		ArrayList<User> tempList = new ArrayList<User> ();
+		if(hasHome) {
+		for(int i=0; i<somebodyWithoutHome.size(); i++)
+			tempList.add(somebodyWithoutHome.get(i));
 		}
-		return iHave;
+		else {
+			for(int i=0; i<somebodyWithHome.size(); i++)
+				tempList.add(somebodyWithHome.get(i));	
+		}
+		if(male) {
+			for(int i=0; i<tempList.size(); i++)
+				if(tempList.get(i).getSex().equals("Female"))
+					tempList.remove(i);
+		} else ;
+		
+		if(female) {
+			for(int i=0; i<tempList.size(); i++)
+				if(tempList.get(i).getSex().equals("Male"))
+					tempList.remove(i);
+		} else ;
+		
+		if(smoker) {
+			for(int i=0; i<tempList.size(); i++)
+				if(!tempList.get(i).isSmoker())
+					tempList.remove(i);
+		} else ; 
+		
+		if(no_smoker) {
+			for(int i=0; i<tempList.size(); i++)
+				if(tempList.get(i).isSmoker())
+					tempList.remove(i);					
+		} else ;
+		
+		if(with_pet) {
+			for(int i=0; i<tempList.size(); i++) {
+				if(tempList.get(i).hasPet()==false)
+					tempList.remove(i);
+				else continue;
+			}
+		} else ; 
+		
+		if(without_pet) {
+			for(int i=0; i<tempList.size(); i++) {
+				if(tempList.get(i).hasPet())
+					tempList.remove(i);
+				else continue;
+			}
+		} else ;
+		
+		
+  
+		return tempList;
 	}
+	
+	
+	
+	
 }

@@ -144,7 +144,7 @@ public class NoHomeProfileGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				for(User current:searcher.myLikes) {
 					if(current.equals(possibleRoomate)) {
-						//tglbtnNewToggleButton.setSelected(false);
+						tglbtnNewToggleButton.setSelected(false);
 					}
 					
 				}
