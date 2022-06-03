@@ -270,7 +270,6 @@ public class SearchingRoomateGUI extends JFrame {
 							for(User current:registry.getListWithHome()) {
 								if(current.equals(user)) {
 									registry.getListWithHome().remove(user);
-									System.exit(0);
 								}
 							}
 						}
@@ -278,7 +277,6 @@ public class SearchingRoomateGUI extends JFrame {
 							for(User current:registry.getListWithoutHome()) {
 								if(current.equals(user)) {
 									registry.getListWithoutHome().remove(user);
-									System.exit(0);
 								}
 							}
 						}
