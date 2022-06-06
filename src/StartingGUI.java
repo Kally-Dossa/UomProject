@@ -28,6 +28,7 @@ public class StartingGUI extends JFrame {
 		getContentPane().setBackground(UIManager.getColor("List.selectionBackground"));
 		getContentPane().setLayout(null);
 		
+		
 		JTextPane txtpnWelcomeToRoom = new JTextPane();
 		txtpnWelcomeToRoom.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnWelcomeToRoom.setEditable(false);

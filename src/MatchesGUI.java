@@ -1,6 +1,10 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -26,11 +30,32 @@ public class MatchesGUI extends JFrame {
 		user = aUser;
 		registry = theRegistry;
 		
-		for(int i=0; i<registry.getListWithHome().size(); i++) {
-			registry.getListWithHome().get(i).matching();
+		user.matching();
+		
+		if(user.hasHome()) {
+			 File f = new File("HaveHomeList.ser");
+				try {
+					FileOutputStream fouts = new FileOutputStream(f, false);
+					ObjectOutputStream douts = new ObjectOutputStream(fouts);
+					douts.writeObject(registry.getListWithHome());
+					douts.close();
+				} catch (IOException e1) {
+						
+					e1.printStackTrace();
+				}
 		}
-		for(int i=0; i<registry.getListWithoutHome().size(); i++) {
-			registry.getListWithoutHome().get(i).matching();
+		
+		else {
+			File f = new File("NoHomeList.ser");
+			try {
+				FileOutputStream fouts = new FileOutputStream(f, false);
+				ObjectOutputStream douts = new ObjectOutputStream(fouts);
+				douts.writeObject(registry.getListWithoutHome());
+				douts.close();
+			} catch (IOException e1) {
+				
+				e1.printStackTrace();
+			}
 		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,5 +1,7 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public abstract class User implements Serializable{
 	
@@ -93,7 +95,25 @@ public abstract class User implements Serializable{
 			for(int j=0; j<myLikes.get(i).myLikes.size(); j++) {
 				if(myLikes.get(i).myLikes.get(j).getEmail().equals(email)) {
 					myMatches.add(myLikes.get(i));
+					myLikes.get(i).getMyMatches().add(this);
+					 Set<User> set = new LinkedHashSet<User>();
+					  
+				        // Add the elements to set
+				        set.addAll(myMatches);
+				  
+				        // Clear the list
+				        myMatches.clear();
+				  
+				        // add the elements of set
+				        // with no duplicates to the list
+				        myMatches.addAll(set);
+				        
+				        set.clear();
+				        set.addAll(myLikes.get(i).getMyMatches());
+				        myLikes.get(i).getMyMatches().clear();
+				        myLikes.get(i).getMyMatches().addAll(set);
 				}
+				
 			}
 		}
 	}

@@ -317,28 +317,7 @@ public class NoHomeSignUpGUI extends JFrame {
 		passwordField.setBounds(109, 131, 108, 20);
 		getContentPane().add(passwordField);
 		
-		JButton AddImage = new JButton("Add Image");
-		AddImage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JLabel l = new JLabel();
-			    l.setBounds(10,10,365,290);
-				JFileChooser file = new JFileChooser("File");
-		        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-		        //filtering files
-		        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png");
-
-		        file.addChoosableFileFilter(filter);
-		        int res = file.showSaveDialog(null);
-		        //if the user clicks on save in Jfilechooser
-		        if(res == JFileChooser.APPROVE_OPTION){
-		          File selFile = file.getSelectedFile();
-		          String path = selFile.getAbsolutePath();
-//		          l.setIcon(resize(path));
-		        }
-			}
-		});
-		AddImage.setBounds(91, 371, 106, 21);
-		getContentPane().add(AddImage);
+		
 		
 	}
 }

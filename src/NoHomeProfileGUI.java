@@ -144,6 +144,12 @@ public class NoHomeProfileGUI extends JFrame {
 		getContentPane().add(btnNewButton);
 		
 		JToggleButton tglbtnNewToggleButton = new JToggleButton("");
+		for(int i=0; i<searcher.myLikes.size(); i++) {
+			if(searcher.myLikes.get(i).getEmail().equals(possibleRoomate.getEmail())) {
+				tglbtnNewToggleButton.setSelected(true);
+			}
+				
+		}
 		tglbtnNewToggleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(tglbtnNewToggleButton.isSelected()) {

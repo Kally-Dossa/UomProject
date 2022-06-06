@@ -327,13 +327,15 @@ public class SearchingRoomateGUI extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_2);
+		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Logout");
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new StartingGUI(registry);
+				dispose();
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem_1);
+		mnNewMenu.add(mntmNewMenuItem_3);
 		
 		this.setVisible(true);
 		this.setSize(477, 475);
