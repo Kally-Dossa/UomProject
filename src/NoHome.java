@@ -12,7 +12,22 @@ public class NoHome extends User implements Serializable{
 	}
 	
 	
-	
+	public void editUser(String aName, String aLastName, String aSex, int anAge, String anEmail, String pass, String aPhoneNum, String aLanguage,
+			boolean aProfessionalStatus, boolean aPet, boolean aSmoker, Home aHome) {
+		
+		name = aName;
+		lastName = aLastName;
+		sex = aSex;
+		email = anEmail;
+		password = pass;
+		phoneNum = aPhoneNum;
+		language = aLanguage;
+		professionalStatus = aProfessionalStatus;
+		age = anAge;
+		pet = aPet;
+		smoker = aSmoker;
+
+	}
 	
 	public User getUser() {
 		

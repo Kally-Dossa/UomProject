@@ -216,46 +216,27 @@ public class HaveHomeProfileGUI extends JFrame{
 		JToggleButton tglbtnNewToggleButton = new JToggleButton();
 		tglbtnNewToggleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(User current:searcher.myLikes) {
-					if(current.equals(possibleRoomate)) {
-						tglbtnNewToggleButton.setSelected(false);
-					}
-					
-				}
-				if (tglbtnNewToggleButton.isSelected()) {
-					 searcher.myLikes.add(possibleRoomate);
-					 for(User current:possibleRoomate.myLikes) {
-						 if(current.equals(searcher)) {
-							 searcher.myMatches.add(possibleRoomate);
-							 possibleRoomate.myMatches.add(searcher);
+				 if(tglbtnNewToggleButton.isSelected()) {
+					 for(int i=0; i<theRegistry.getListWithoutHome().size(); i++) {
+						 if(theRegistry.getListWithoutHome().get(i).getEmail().equals(searcher.getEmail())) {
+							 theRegistry.getListWithoutHome().get(i).myLikes.add(possibleRoomate);
 						 }
-						 
+							 
 					 }
-					// ελεγχος
-					 for(User current:searcher.myLikes) {
-						 System.out.println(current.name+" likes "+ searcher.myLikes.size());
-					 }
-					 for(User current:searcher.myMatches) {
-						 System.out.println(current.name+"matches");
-					 }
+					 
+					 File f = new File("NoHomeList.ser");
+						try {
+							FileOutputStream fouts = new FileOutputStream(f, false);
+							ObjectOutputStream douts = new ObjectOutputStream(fouts);
+							douts.writeObject(theRegistry.getListWithoutHome());
+							douts.close();
+						} catch (IOException e1) {
+							
+							e1.printStackTrace();
+						}
+						System.out.println(searcher.myLikes.size());
 				 }
-				 else {
-					 for(User current:searcher.myLikes) {
-						 if(current.equals(possibleRoomate)) {
-							 current.myLikes.remove(possibleRoomate);
-						 }
-					 }
-					 for(User current:searcher.myMatches) {
-						 if(current.equals(possibleRoomate)) {
-							 current.myMatches.remove(possibleRoomate);
-						 }
-					 }
-					 for(User current:possibleRoomate.myMatches) {
-						 if(current.equals(searcher)) {
-							 current.myMatches.remove(searcher);
-						 }
-					 }
-				 }
+			 
 				 
 			}
 		});
@@ -263,7 +244,7 @@ public class HaveHomeProfileGUI extends JFrame{
 		Image img = new ImageIcon(this.getClass().getResource("/like_icon.png")).getImage();
 		tglbtnNewToggleButton.setIcon(new ImageIcon(img));
 		getContentPane().add(tglbtnNewToggleButton);
-		
+		if(MatchOrNot) {tglbtnNewToggleButton.setVisible(false);}
 		
 		this.setVisible(true);
 		this.setSize(445, 780);

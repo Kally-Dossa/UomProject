@@ -12,7 +12,7 @@ public abstract class User implements Serializable{
 	
 	public User(String aName, String aLastName, String aSex,int anAge, String anEmail,String pass, String aPhoneNum, String aLanguage,  boolean aPet,
 			boolean aSmoker, boolean aProfessionalStatus) {
-		super();
+		
 		name = aName;
 		lastName = aLastName;
 		sex = aSex;
@@ -26,6 +26,9 @@ public abstract class User implements Serializable{
 		smoker = aSmoker;
 		
 	}
+	
+	public abstract void editUser(String aName, String aLastName, String aSex,int anAge, String anEmail,String pass, String aPhoneNum, String aLanguage,  boolean aPet,
+			boolean aSmoker, boolean aProfessionalStatus, Home aHome);
 	
 	public abstract User getUser();
 	public abstract boolean hasHome();
@@ -84,4 +87,14 @@ public abstract class User implements Serializable{
 	}
 	
 	
+	
+	public void matching() {
+		for(int i=0; i<myLikes.size(); i++) {
+			for(int j=0; j<myLikes.get(i).myLikes.size(); j++) {
+				if(myLikes.get(i).myLikes.get(j).getEmail().equals(email)) {
+					myMatches.add(myLikes.get(i));
+				}
+			}
+		}
+	}
 }

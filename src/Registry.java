@@ -97,9 +97,9 @@ public class Registry {
 		
 		if(with_pet) {
 			for(int i=0; i<tempList.size(); i++) {
-				if(tempList.get(i).hasPet()==false)
+				if(!tempList.get(i).hasPet())
 					tempList.remove(i);
-				else continue;
+				
 			}
 		} else ; 
 		
@@ -107,7 +107,7 @@ public class Registry {
 			for(int i=0; i<tempList.size(); i++) {
 				if(tempList.get(i).hasPet())
 					tempList.remove(i);
-				else continue;
+				
 			}
 		} else ;
 		
@@ -116,7 +116,8 @@ public class Registry {
 		return tempList;
 	}
 	
-	
-	
+	public void removeHaveHome(int i) {
+		somebodyWithHome.remove(i);
+	}
 	
 }

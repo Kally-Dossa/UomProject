@@ -2,6 +2,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -246,6 +250,28 @@ public class SearchingRoomateGUI extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("My Profile");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(user.hasHome()) {
+					for(int i=0; i<registry.getListWithHome().size(); i++) {
+						if(registry.getListWithHome().get(i).getEmail().equals(user.getEmail())) {
+							new HaveHomeEditPGUI(registry.getListWithHome().get(i), registry);
+							dispose();
+							
+						}
+					}
+				}
+				
+				else {
+					for(int i=0; i<registry.getListWithoutHome().size(); i++) {
+						if(registry.getListWithoutHome().get(i).getEmail().equals(user.getEmail())){
+							new NoHomeEditPGUI(registry.getListWithoutHome().get(i), registry);
+							dispose();
+						}
+					}
+				}
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("My matches");
@@ -267,25 +293,47 @@ public class SearchingRoomateGUI extends JFrame {
 						JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION)
 				{
 						if(user.hasHome()) {
-							for(User current:registry.getListWithHome()) {
-								if(current.equals(user)) {
-									registry.getListWithHome().remove(user);
-									System.exit(0);
-								}
+
+							registry.getListWithHome().remove(user);
+							File f = new File("HaveHomeList.ser");
+							try {
+								FileOutputStream fouts = new FileOutputStream(f, false);
+								ObjectOutputStream douts = new ObjectOutputStream(fouts);
+								douts.writeObject(registry.getListWithHome());
+								douts.close();
+							} catch (IOException e1) {
+								
+								e1.printStackTrace();
 							}
 						}
 						else {
-							for(User current:registry.getListWithoutHome()) {
-								if(current.equals(user)) {
-									registry.getListWithoutHome().remove(user);
-									System.exit(0);
-								}
+							registry.getListWithoutHome().remove(user);
+							File f = new File("NoHomeList.ser");
+							try {								
+								FileOutputStream fouts = new FileOutputStream(f, false);
+								ObjectOutputStream douts = new ObjectOutputStream(fouts);
+								douts.writeObject(registry.getListWithoutHome());
+								douts.close();
+							} catch (IOException e1) {
+								
+								e1.printStackTrace();
+
 							}
+							
 						}
+						new StartingGUI(registry);
+						dispose();
 				}
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_2);
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Logout");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new StartingGUI(registry);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		this.setVisible(true);
 		this.setSize(477, 475);

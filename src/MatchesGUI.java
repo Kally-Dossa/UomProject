@@ -1,21 +1,18 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.SystemColor;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 public class MatchesGUI extends JFrame {
 
@@ -23,29 +20,18 @@ public class MatchesGUI extends JFrame {
 	private User user;
 	private Registry registry;
 	
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MatchesGUI frame = new MatchesGUI(user,registry);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 
-	/**
-	 * Create the frame.
-	 */
 	public MatchesGUI(User aUser, Registry theRegistry) {
 		setResizable(false);
 		user = aUser;
 		registry = theRegistry;
+		
+		for(int i=0; i<registry.getListWithHome().size(); i++) {
+			registry.getListWithHome().get(i).matching();
+		}
+		for(int i=0; i<registry.getListWithoutHome().size(); i++) {
+			registry.getListWithoutHome().get(i).matching();
+		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 313, 481);
@@ -67,9 +53,10 @@ public class MatchesGUI extends JFrame {
 		JList list = new JList();
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		DefaultListModel listModel = new DefaultListModel();
-		for(int i=0; i<user.getMyMatches().size(); i++) {
-			listModel.addElement(user.getMyMatches().get(i).getName() + " " + user.getMyMatches().get(i).getLastName());
+		for(int i=0; i<user.myMatches.size(); i++) {
+			listModel.addElement(user.myMatches.get(i).getName() + " " + user.myMatches.get(i).getLastName());	
 		}
+		
 		list.setModel(listModel);
 		scrollPane.setViewportView(list);
 		
@@ -77,7 +64,23 @@ public class MatchesGUI extends JFrame {
 		JButton btnNewButton = new JButton("Show Profile");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				String userName = "";
+				if(user.hasHome()) {
+					for(int i=0; i<registry.getListWithoutHome().size(); i++) {
+						userName = registry.getListWithoutHome().get(i).getName() + " " + registry.getListWithoutHome().get(i).getLastName();
+						if(list.getSelectedValue().equals(userName)) {
+							new NoHomeProfileGUI(user, true, registry.getListWithoutHome().get(i), registry);
+						} else continue;
+					}
+				}
+				else {
+					for(int i=0; i<registry.getListWithHome().size(); i++) {
+						userName = registry.getListWithHome().get(i).getName() + " " + registry.getListWithHome().get(i).getLastName();
+						if(list.getSelectedValue().equals(userName)) {
+							new HaveHomeProfileGUI(user, true, registry.getListWithHome().get(i), registry);
+						} else continue;
+					}
+				}
 			}
 		});
 		btnNewButton.setBounds(97, 332, 111, 23);

@@ -120,6 +120,7 @@ public class StartingGUI extends JFrame {
 		passwordField.setBounds(162, 176, 86, 20);
 		getContentPane().add(passwordField);
 		
+		setResizable(false);
 		this.setVisible(true);
 		this.setSize(450, 447);
 		this.setTitle("User details");

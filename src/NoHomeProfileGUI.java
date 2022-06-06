@@ -2,6 +2,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -142,51 +146,30 @@ public class NoHomeProfileGUI extends JFrame {
 		JToggleButton tglbtnNewToggleButton = new JToggleButton("");
 		tglbtnNewToggleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(User current:searcher.myLikes) {
-					if(current.equals(possibleRoomate)) {
-						tglbtnNewToggleButton.setSelected(false);
+				if(tglbtnNewToggleButton.isSelected()) {
+					for(int i=0; i<theRegistry.getListWithHome().size(); i++) {
+						if(theRegistry.getListWithHome().get(i).getEmail().equals(searcher.getEmail())) {
+							 theRegistry.getListWithHome().get(i).myLikes.add(possibleRoomate);
+						}
 					}
-					
-				}
-				if (tglbtnNewToggleButton.isSelected()) {
-					 searcher.myLikes.add(possibleRoomate);
-					 for(User current:possibleRoomate.myLikes) {
-						 if(current.equals(searcher)) {
-							 searcher.myMatches.add(possibleRoomate);
-							 possibleRoomate.myMatches.add(searcher);
-						 }
-						 
-					 }
-					 // ελεγχος
-					 for(User current:searcher.myLikes) {
-						 System.out.println(current.name+" likes "+ searcher.myLikes.size());
-					 }
-					 for(User current:searcher.myMatches) {
-						 System.out.println(current.name+"matches");
-					 }
+					 File f = new File("HaveHomeList.ser");
+						try {
+							FileOutputStream fouts = new FileOutputStream(f, false);
+							ObjectOutputStream douts = new ObjectOutputStream(fouts);
+							douts.writeObject(theRegistry.getListWithHome());
+							douts.close();
+						} catch (IOException e1) {
+								
+							e1.printStackTrace();
+						}
+						System.out.println(searcher.myLikes.size());
 				 }
-				 else {
-					 for(User current:searcher.myLikes) {
-						 if(current.equals(possibleRoomate)) {
-							 current.myLikes.remove(current);
-							 System.out.println("removed"+searcher.myLikes.size());						 }
-					 }
-					 for(User current:searcher.myMatches) {
-						 if(current.equals(possibleRoomate)) {
-							 current.myMatches.remove(possibleRoomate);
-						 }
-					 }
-					 for(User current:possibleRoomate.myMatches) {
-						 if(current.equals(searcher)) {
-							 current.myMatches.remove(searcher);
-						 }
-					 }
-				 }
+				 
 			}
 		});
 		tglbtnNewToggleButton.setBounds(228, 364, 48, 48);
 		getContentPane().add(tglbtnNewToggleButton);
-		
+		if(MatchOrNot) {tglbtnNewToggleButton.setVisible(false);}
 		
 		Image img = new ImageIcon(this.getClass().getResource("/like_icon.png")).getImage();
 		tglbtnNewToggleButton.setIcon(new ImageIcon(img));

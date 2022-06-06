@@ -13,8 +13,22 @@ public class HaveHome extends User implements Serializable{
 	}
 	
 	
-	
-
+	public void editUser(String aName, String aLastName, String aSex,int anAge, String anEmail,String pass, String aPhoneNum, String aLanguage,  boolean aPet,
+			boolean aSmoker, boolean aProfessionalStatus,Home aHome) {
+		name = aName;
+		lastName = aLastName;
+		sex = aSex;
+		email = anEmail;
+		password = pass;
+		phoneNum = aPhoneNum;
+		language = aLanguage;
+		professionalStatus = aProfessionalStatus;
+		age = anAge;
+		pet = aPet;
+		smoker = aSmoker;
+		myHome = aHome;
+		
+	}
 	public User getUser() {
 		return this;
 	}

@@ -124,7 +124,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 		getContentPane().add(txtpnSmoker);
 		
 		JTextPane txtpnWorking = new JTextPane();
-		txtpnWorking.setText("Working");
+		txtpnWorking.setText("Working:");
 		txtpnWorking.setEditable(false);
 		txtpnWorking.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnWorking.setBounds(12, 348, 90, 20);
@@ -277,42 +277,49 @@ public class HaveHomeSignUpGUI extends JFrame {
 		getContentPane().add(separator);
 		
 		JTextPane txtpnAddress = new JTextPane();
-		txtpnAddress.setText("City:");
+		txtpnAddress.setEditable(false);
+		txtpnAddress.setText("Area:");
 		txtpnAddress.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnAddress.setBounds(12, 417, 80, 20);
 		getContentPane().add(txtpnAddress);
 		
 		JTextPane txtpnCity = new JTextPane();
+		txtpnCity.setEditable(false);
 		txtpnCity.setText("Address:");
 		txtpnCity.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnCity.setBounds(12, 448, 90, 20);
 		getContentPane().add(txtpnCity);
 		
 		JTextPane txtpnPet_1 = new JTextPane();
+		txtpnPet_1.setEditable(false);
 		txtpnPet_1.setText("Size(s.m):");
 		txtpnPet_1.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnPet_1.setBounds(12, 479, 90, 20);
 		getContentPane().add(txtpnPet_1);
 		
 		JTextPane txtpnHeating = new JTextPane();
+		txtpnHeating.setEditable(false);
 		txtpnHeating.setText("Floor:");
 		txtpnHeating.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnHeating.setBounds(12, 510, 90, 20);
 		getContentPane().add(txtpnHeating);
 		
 		JTextPane txtpnPet_2 = new JTextPane();
+		txtpnPet_2.setEditable(false);
 		txtpnPet_2.setText("Heating:");
 		txtpnPet_2.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnPet_2.setBounds(12, 541, 80, 20);
 		getContentPane().add(txtpnPet_2);
 		
 		JTextPane txtpnPet_3 = new JTextPane();
+		txtpnPet_3.setEditable(false);
 		txtpnPet_3.setText("Pet:");
 		txtpnPet_3.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnPet_3.setBounds(12, 572, 72, 20);
 		getContentPane().add(txtpnPet_3);
 		
 		JTextPane txtpnRent = new JTextPane();
+		txtpnRent.setEditable(false);
 		txtpnRent.setText("Rent:");
 		txtpnRent.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnRent.setBounds(12, 632, 95, 20);
@@ -329,6 +336,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 		getContentPane().add(separator_1);
 		
 		JTextPane txtpnBedrooms = new JTextPane();
+		txtpnBedrooms.setEditable(false);
 		txtpnBedrooms.setText("Bedrooms:");
 		txtpnBedrooms.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnBedrooms.setBounds(12, 603, 80, 20);
@@ -441,7 +449,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 				new StartingGUI(theRegistry);
 			}
 		});
-		CreateProfileBtn.setBounds(149, 730, 106, 23);
+		CreateProfileBtn.setBounds(139, 689, 106, 23);
 		getContentPane().add(CreateProfileBtn);
 		
 		JTextPane txtpnPass = new JTextPane();
@@ -455,31 +463,8 @@ public class HaveHomeSignUpGUI extends JFrame {
 		passwordField.setBounds(129, 135, 126, 20);
 		getContentPane().add(passwordField);
 		
-		JButton AddImage = new JButton("Add Image");
-		AddImage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JLabel l = new JLabel();
-			    l.setBounds(10,10,365,290);
-				JFileChooser file = new JFileChooser("File");
-		        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-		        //filtering files
-		        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","png");
-
-		        file.addChoosableFileFilter(filter);
-		        int res = file.showSaveDialog(null);
-		        //if the user clicks on save in Jfilechooser
-		        if(res == JFileChooser.APPROVE_OPTION){
-		          File selFile = file.getSelectedFile();
-		          String path = selFile.getAbsolutePath();
-//		          l.setIcon(resize(path));
-		        }
-			}
-		});
-		AddImage.setBounds(149, 684, 106, 21);
-		getContentPane().add(AddImage);
-		
 		this.setVisible(true);
-		this.setSize(445, 800);
+		this.setSize(429, 771);
 		this.setTitle("User details");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
