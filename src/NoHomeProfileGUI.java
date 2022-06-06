@@ -121,14 +121,14 @@ public class NoHomeProfileGUI extends JFrame {
 		ContactInfoPanel.add(lblNewLabel);
 		
 		JTextPane txtpnPhone = new JTextPane();
-		txtpnPhone.setBounds(10, 54, 278, 20);
+		txtpnPhone.setBounds(10, 81, 278, 20);
 		ContactInfoPanel.add(txtpnPhone);
 		txtpnPhone.setEditable(false);
 		txtpnPhone.setBackground(UIManager.getColor("List.selectionBackground"));
 		txtpnPhone.setText("Phone: " + aUser.getPhoneNum());
 		
 		JTextPane txtpnEmail = new JTextPane();
-		txtpnEmail.setBounds(10, 85, 278, 20);
+		txtpnEmail.setBounds(10, 54, 278, 20);
 		ContactInfoPanel.add(txtpnEmail);
 		txtpnEmail.setEditable(false);
 		txtpnEmail.setBackground(UIManager.getColor("List.selectionBackground"));

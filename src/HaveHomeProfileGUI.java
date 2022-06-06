@@ -20,6 +20,7 @@ import javax.swing.UIManager;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
+import java.awt.SystemColor;
 
 public class HaveHomeProfileGUI extends JFrame{
 	
@@ -181,23 +182,9 @@ public class HaveHomeProfileGUI extends JFrame{
 		panel.setLayout(null);
 		if(MatchOrNot) {panel.setVisible(true);}
 		else {panel.setVisible(false);}
-		JTextPane txtpnEmail = new JTextPane();
-		txtpnEmail.setBounds(26, 59, 35, 20);
-		panel.add(txtpnEmail);
-		txtpnEmail.setText("Email: " + aUser.getEmail());
-		txtpnEmail.setEditable(false);
-		txtpnEmail.setBackground(UIManager.getColor("List.selectionBackground"));
 		
-		JTextPane txtpnPhone = new JTextPane();
-		txtpnPhone.setBounds(156, -125, 219, 20);
-		panel.add(txtpnPhone);
-		txtpnPhone.setText("Phone: " + aUser.getPhoneNum());
-		txtpnPhone.setEditable(false);
-		txtpnPhone.setBackground(UIManager.getColor("List.selectionBackground"));
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(26, 90, 213, 22);
-		panel.add(lblNewLabel);
+	
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(10, 11, 395, 8);
@@ -212,6 +199,20 @@ public class HaveHomeProfileGUI extends JFrame{
 		lblNewLabel_1.setBackground(UIManager.getColor("List.selectionBackground"));
 		lblNewLabel_1.setBounds(145, 11, 125, 24);
 		panel.add(lblNewLabel_1);
+		
+		JTextPane txtpnPhone = new JTextPane();
+		txtpnPhone.setText("Phone number: " + possibleRoomate.getPhoneNum());
+		txtpnPhone.setBounds(26, 59, 228, 20);
+		panel.add(txtpnPhone);
+		txtpnPhone.setEditable(false);
+		txtpnPhone.setBackground(UIManager.getColor("List.selectionBackground"));
+		
+		JTextPane txtpnEmail_1 = new JTextPane();
+		txtpnEmail_1.setText("Email: " + possibleRoomate.getEmail());
+		txtpnEmail_1.setEditable(false);
+		txtpnEmail_1.setBackground(UIManager.getColor("List.selectionBackground"));
+		txtpnEmail_1.setBounds(26, 89, 228, 20);
+		panel.add(txtpnEmail_1);
 		
 		JToggleButton tglbtnNewToggleButton = new JToggleButton();
 		for(int i=0; i<searcher.myLikes.size(); i++) {
