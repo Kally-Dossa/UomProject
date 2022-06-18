@@ -1,5 +1,12 @@
 import java.io.Serializable;
 
+/*
+ * Home class represents the house a user owns.
+ * Every HaveHome user has a Home attribute.
+ * This class is used for data modeling of a user's
+ * house and has no methods of great significance.
+ */
+
 public class Home implements Serializable {
 	
 	private double rent;
@@ -30,8 +37,6 @@ public class Home implements Serializable {
 		this.m2 = m2;
 	}
 	
-	
-
 	public double getRent() {
 		return rent;
 	}
@@ -63,7 +68,4 @@ public class Home implements Serializable {
 	public boolean petAllowed() {
 		return petsAllowed;
 	}
-	
-	
-
 }

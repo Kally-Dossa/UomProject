@@ -15,6 +15,12 @@ import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JPasswordField;
 
+/*
+ * StaringGUI is the first screen you see when you run the app.
+ * You can either sign in if you have created an account using your 
+ * email and your password. If you don't have an account you can
+ * create one by clicking on the sign up button.
+ */
 
 public class StartingGUI extends JFrame {
 	private JTextField textFieldEmail;

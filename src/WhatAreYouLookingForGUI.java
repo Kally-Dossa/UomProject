@@ -8,6 +8,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/*
+ * WhatAreYouLookingForGUI is the first screen, after you click the
+ * sign up button, asking you whether you have a house or not. 
+ */
+
 public class WhatAreYouLookingForGUI extends JFrame{
 	private Registry theRegistry;
 	
@@ -63,7 +68,6 @@ public class WhatAreYouLookingForGUI extends JFrame{
 					}
 					else
 						JOptionPane.showMessageDialog(null, "You must choose an option first!");
-					
 				}
 					
 				WhatAreYouLookingForGUI.this.dispose();
@@ -75,6 +79,5 @@ public class WhatAreYouLookingForGUI extends JFrame{
 		this.setSize(450, 303);
 		this.setTitle("User details");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 	}
 }

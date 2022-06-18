@@ -1,4 +1,3 @@
-
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -23,6 +22,13 @@ import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JPasswordField;
+
+/*
+ * HaveHomeSignUpGUI is the graphic interface where the
+ * user fills his profile info when he signs up and then 
+ * he is added in the serial file the contains all the 
+ * users that own a house and are just looking for a roomate.
+ */
 
 public class HaveHomeSignUpGUI extends JFrame {
 	private Registry theRegistry;
@@ -52,13 +58,13 @@ public class HaveHomeSignUpGUI extends JFrame {
 		scrollPane.setBounds(0, 0, 2, 400);
 		getContentPane().add(scrollPane);
 		
-		JTextPane txtpnPleaseFillThe = new JTextPane();						//afta einai ta gramata "plese fill the following info"
-		txtpnPleaseFillThe.setFont(new Font("Tahoma", Font.PLAIN, 13));				//gramatosira kai megethos gramaton
-		txtpnPleaseFillThe.setBackground(UIManager.getColor("List.selectionBackground"));	//xroma background
-		txtpnPleaseFillThe.setEditable(false);							//na min exis tin dinatotita gia edit
-		txtpnPleaseFillThe.setText("Please fill the following information about you:");		//ti grafi to pane
-		txtpnPleaseFillThe.setBounds(12, 11, 318, 20);						//size
-		getContentPane().add(txtpnPleaseFillThe);						//to prostheti sto geniko pane
+		JTextPane txtpnPleaseFillThe = new JTextPane();						
+		txtpnPleaseFillThe.setFont(new Font("Tahoma", Font.PLAIN, 13));			
+		txtpnPleaseFillThe.setBackground(UIManager.getColor("List.selectionBackground"));	
+		txtpnPleaseFillThe.setEditable(false);						
+		txtpnPleaseFillThe.setText("Please fill the following information about you:");
+		txtpnPleaseFillThe.setBounds(12, 11, 318, 20);						
+		getContentPane().add(txtpnPleaseFillThe);						
 		
 		JTextPane txtpnName = new JTextPane();
 		txtpnName.setText("Name:");
@@ -135,7 +141,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 		getContentPane().add(textFieldName);
 		textFieldName.setColumns(10);
 		
-		textFieldSurname = new JTextField();				//ta textField einai ta koutakia opou o xristis mpori na pliktrologisi dipla apo ta stoixia pou tou zita
+		textFieldSurname = new JTextField();			
 		textFieldSurname.setColumns(10);
 		textFieldSurname.setBounds(129, 73, 126, 20);
 		getContentPane().add(textFieldSurname);
@@ -159,7 +165,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 		textFieldLang.setColumns(10);
 		textFieldLang.setBounds(129, 228, 126, 20);
 		getContentPane().add(textFieldLang);
-		//JRadioButton einai ta koutakia epilogis stin simplirosi stoixion
+		
 		JRadioButton rdbtnMale = new JRadioButton("Male");				
 		rdbtnMale.setBackground(UIManager.getColor("List.selectionBackground"));
 		rdbtnMale.setBounds(122, 256, 72, 23);
@@ -197,11 +203,11 @@ public class HaveHomeSignUpGUI extends JFrame {
 		
 		JRadioButton rdbtnUnemployed = new JRadioButton("Unemployed");
 		rdbtnUnemployed.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnUnemployed.setBounds(221, 343, 90, 23);
+		rdbtnUnemployed.setBounds(221, 343, 126, 23);
 		getContentPane().add(rdbtnUnemployed);
 		
 		//Personal Info Radio Buttons Listeners
-		rdbtnMale.addActionListener(new ActionListener() {  	 //se dini tin dinatotita na epileksis metaksi 2 epilogon (male or female) oxi kai ta 2!
+		rdbtnMale.addActionListener(new ActionListener() {  
 			public void actionPerformed(ActionEvent e) {
 				rdbtnFemale.setEnabled(false);
 				if(!rdbtnMale.isSelected()) {
@@ -313,9 +319,9 @@ public class HaveHomeSignUpGUI extends JFrame {
 		
 		JTextPane txtpnPet_3 = new JTextPane();
 		txtpnPet_3.setEditable(false);
-		txtpnPet_3.setText("Pet:");
+		txtpnPet_3.setText("Pet Allowed:");
 		txtpnPet_3.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnPet_3.setBounds(12, 572, 72, 20);
+		txtpnPet_3.setBounds(12, 572, 104, 20);
 		getContentPane().add(txtpnPet_3);
 		
 		JTextPane txtpnRent = new JTextPane();
@@ -449,7 +455,7 @@ public class HaveHomeSignUpGUI extends JFrame {
 				new StartingGUI(theRegistry);
 			}
 		});
-		CreateProfileBtn.setBounds(139, 689, 106, 23);
+		CreateProfileBtn.setBounds(129, 686, 126, 23);
 		getContentPane().add(CreateProfileBtn);
 		
 		JTextPane txtpnPass = new JTextPane();

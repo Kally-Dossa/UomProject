@@ -22,6 +22,18 @@ import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 import java.awt.SystemColor;
 
+/*
+ * HaveHomeProfileGUI is the graphic  interface that shows
+ * to a user that doesn't  own a house the information
+ * of a another user that he picked from the suggested
+ * roomates' list. If HaveHomeProfileGUI is called from 
+ * MatchesGUI is also contains the contact information 
+ * of the user. If it's called from SearchingRoomateGUI
+ * the contact info is missing and there's a like button
+ * that if it's clicked the user shown gets added in the 
+ * searching user's myLikes list.
+ */
+
 public class HaveHomeProfileGUI extends JFrame{
 	
 	
@@ -95,48 +107,48 @@ public class HaveHomeProfileGUI extends JFrame{
 		separator.setBounds(14, 232, 395, 2);
 		getContentPane().add(separator);
 		
+		JTextPane txtpnArea = new JTextPane();
+		txtpnArea.setEditable(false);
+		txtpnArea.setText("Area: " + aUser.getHome().getArea());
+		txtpnArea.setBackground(UIManager.getColor("List.selectionBackground"));
+		txtpnArea.setBounds(14, 276, 252, 20);
+		getContentPane().add(txtpnArea);
+		
 		JTextPane txtpnAddress = new JTextPane();
 		txtpnAddress.setEditable(false);
-		txtpnAddress.setText("City: " + aUser.getHome().getArea());
+		txtpnAddress.setText("Address: " + aUser.getHome().getAddress());
 		txtpnAddress.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnAddress.setBounds(14, 276, 252, 20);
+		txtpnAddress.setBounds(14, 307, 279, 20);
 		getContentPane().add(txtpnAddress);
 		
-		JTextPane txtpnCity = new JTextPane();
-		txtpnCity.setEditable(false);
-		txtpnCity.setText("Address: " + aUser.getHome().getAddress());
-		txtpnCity.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnCity.setBounds(14, 307, 279, 20);
-		getContentPane().add(txtpnCity);
+		JTextPane txtpnSize = new JTextPane();
+		txtpnSize.setEditable(false);
+		txtpnSize.setText("Size(s.m): " + aUser.getHome().getM2());
+		txtpnSize.setBackground(UIManager.getColor("List.selectionBackground"));
+		txtpnSize.setBounds(14, 338, 90, 20);
+		getContentPane().add(txtpnSize);
 		
-		JTextPane txtpnPet_1 = new JTextPane();
-		txtpnPet_1.setEditable(false);
-		txtpnPet_1.setText("Size(s.m): " + aUser.getHome().getM2());
-		txtpnPet_1.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnPet_1.setBounds(14, 338, 90, 20);
-		getContentPane().add(txtpnPet_1);
+		JTextPane txtpnFloor = new JTextPane();
+		txtpnFloor.setEditable(false);
+		txtpnFloor.setText("Floor: " + aUser.getHome().getFloor());
+		txtpnFloor.setBackground(UIManager.getColor("List.selectionBackground"));
+		txtpnFloor.setBounds(14, 369, 73, 20);
+		getContentPane().add(txtpnFloor);
 		
 		JTextPane txtpnHeating = new JTextPane();
 		txtpnHeating.setEditable(false);
-		txtpnHeating.setText("Floor: " + aUser.getHome().getFloor());
+		txtpnHeating.setText("Heating:" + aUser.getHome().getHeating() );
 		txtpnHeating.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnHeating.setBounds(14, 369, 73, 20);
+		txtpnHeating.setBounds(14, 400, 138, 20);
 		getContentPane().add(txtpnHeating);
 		
 		JTextPane txtpnPet_2 = new JTextPane();
 		txtpnPet_2.setEditable(false);
-		txtpnPet_2.setText("Heating:" + aUser.getHome().getHeating() );
+		if(aUser.getHome().petAllowed()) {txtpnPet_2.setText("Pet Allowed: Yes");}
+		else {txtpnPet_2.setText("Pet Allowed: No");}
 		txtpnPet_2.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnPet_2.setBounds(14, 400, 138, 20);
+		txtpnPet_2.setBounds(14, 431, 217, 20);
 		getContentPane().add(txtpnPet_2);
-		
-		JTextPane txtpnPet_3 = new JTextPane();
-		txtpnPet_3.setEditable(false);
-		if(aUser.getHome().petAllowed()) {txtpnPet_3.setText("Pet: Yes");}
-		else {txtpnPet_3.setText("Pet: No");}
-		txtpnPet_3.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnPet_3.setBounds(14, 431, 217, 20);
-		getContentPane().add(txtpnPet_3);
 		
 		JTextPane txtpnRent = new JTextPane();
 		txtpnRent.setEditable(false);
@@ -218,6 +230,7 @@ public class HaveHomeProfileGUI extends JFrame{
 		for(int i=0; i<searcher.myLikes.size(); i++) {
 			if(searcher.myLikes.get(i).getEmail().equals(possibleRoomate.getEmail())) {
 				tglbtnNewToggleButton.setSelected(true);
+				tglbtnNewToggleButton.setEnabled(false);
 			}
 				
 		}

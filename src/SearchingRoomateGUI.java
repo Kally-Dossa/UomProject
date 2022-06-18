@@ -22,6 +22,16 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import java.awt.SystemColor;
+import javax.swing.JScrollPane;
+
+/*
+ * SearchingRoomateGUI is the main graphic interface. In this screen
+ * there is a suggested roomate list which can be altered by using certain
+ * filters. By selecting a person and clicking the "show profile" button
+ * the user can see that person's general info. There's also a menu that
+ * takes the user to other screens for profile editing, matching screen, 
+ * delete your account or log out.
+ */
 
 public class SearchingRoomateGUI extends JFrame {
 	
@@ -51,22 +61,22 @@ public class SearchingRoomateGUI extends JFrame {
 		
 		JRadioButton rdbtnFemale = new JRadioButton("Female");
 		rdbtnFemale.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnFemale.setBounds(87, 111, 68, 23);
+		rdbtnFemale.setBounds(97, 111, 68, 23);
 		getContentPane().add(rdbtnFemale);
 		
 		JRadioButton rdbtnSmoker = new JRadioButton("Smoker");
 		rdbtnSmoker.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnSmoker.setBounds(6, 137, 61, 23);
+		rdbtnSmoker.setBounds(6, 137, 79, 23);
 		getContentPane().add(rdbtnSmoker);
 		
 		JRadioButton rdbtnNonSmoker = new JRadioButton("Non Smoker");
 		rdbtnNonSmoker.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnNonSmoker.setBounds(87, 137, 90, 23);
+		rdbtnNonSmoker.setBounds(97, 137, 109, 23);
 		getContentPane().add(rdbtnNonSmoker);
 		
 		JRadioButton rdbtnWithoutPet = new JRadioButton("Without pet");
 		rdbtnWithoutPet.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnWithoutPet.setBounds(87, 163, 90, 23);
+		rdbtnWithoutPet.setBounds(97, 163, 90, 23);
 		getContentPane().add(rdbtnWithoutPet);
 		
 		JRadioButton rdbtnWithPet = new JRadioButton("With Pet");
@@ -126,11 +136,14 @@ public class SearchingRoomateGUI extends JFrame {
 		JLabel lblList = new JLabel("Suggested roomates list:");
 		lblList.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblList.setBackground(UIManager.getColor("List.selectionBackground"));
-		lblList.setBounds(193, 58, 164, 14);
+		lblList.setBounds(221, 68, 164, 14);
 		getContentPane().add(lblList);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(227, 93, 207, 236);
+		getContentPane().add(scrollPane);
 		JList suggestedList = new JList();
-		suggestedList.setBounds(202, 94, 207, 236);
-		getContentPane().add(suggestedList);
+		scrollPane.setViewportView(suggestedList);
 		DefaultListModel listModel = new DefaultListModel();
 		if(user.hasHome()) {
 			for(int i=0; i<theRegistry.getListWithoutHome().size(); i++) {
@@ -147,7 +160,7 @@ public class SearchingRoomateGUI extends JFrame {
 		}
 		suggestedList.setModel(listModel);
 		
-		JButton btnAddFilters = new JButton("Add filters");
+		JButton btnAddFilters = new JButton("Add Filters");
 		btnAddFilters.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(user.hasHome()) {
@@ -181,7 +194,7 @@ public class SearchingRoomateGUI extends JFrame {
 				}	
 			}
 		});
-		btnAddFilters.setBounds(42, 220, 89, 23);
+		btnAddFilters.setBounds(23, 220, 132, 23);
 		getContentPane().add(btnAddFilters);
 		
 		JButton btnRemoveF = new JButton("Remove Filters");
@@ -196,7 +209,7 @@ public class SearchingRoomateGUI extends JFrame {
 				suggestedList.setModel(listModel);
 			}
 		});
-		btnRemoveF.setBounds(33, 254, 109, 23);
+		btnRemoveF.setBounds(23, 254, 132, 23);
 		getContentPane().add(btnRemoveF);
 		
 		JButton btnNewButton = new JButton("Show Profile");
@@ -228,13 +241,14 @@ public class SearchingRoomateGUI extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(247, 341, 113, 23);
+		btnNewButton.setBounds(274, 340, 122, 23);
 		getContentPane().add(btnNewButton);
 		
 		JSeparator separator = new JSeparator();
+		separator.setForeground(Color.WHITE);
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setBackground(Color.WHITE);
-		separator.setBounds(182, 59, 1, 271);
+		separator.setBounds(207, 58, 1, 271);
 		getContentPane().add(separator);
 		
 		JLabel lblNewLabel = new JLabel("Filters:");

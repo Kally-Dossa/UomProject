@@ -2,6 +2,14 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/*
+ * Registry class represents a "registry" where all the
+ * users that use the app are stored. It has 2 methods
+ * verification (used for logging in) and listFiltering
+ * (used at searchingRoomateGUI to keep the user's that 
+ * have some specific attributes).
+ */
+
 public class Registry {
 	private ArrayList<HaveHome> somebodyWithHome;
 	private ArrayList<NoHome> somebodyWithoutHome;

@@ -15,6 +15,13 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.UIManager;
 
+/*
+ * NoHomeEditPGUI is the graphic interface where a user 
+ * that doesn't have a house can change his information as 
+ * he likes. The new information are updated at 
+ * the serial files used as "database".
+ */
+
 public class NoHomeEditPGUI extends JFrame{
 	private Registry registry;
 	private NoHome user;

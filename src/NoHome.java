@@ -1,6 +1,13 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/*
+ * NoHome class represents a user that doesn't have a house
+ * and is only looking for someone that owns one. It's used 
+ * just for data modeling and doesn't have methods with great 
+ * significance.
+ */
+
 public class NoHome extends User implements Serializable{
 
 
@@ -10,8 +17,6 @@ public class NoHome extends User implements Serializable{
 		
 		
 	}
-	
-	
 	public void editUser(String aName, String aLastName, String aSex, int anAge, String anEmail, String pass, String aPhoneNum, String aLanguage,
 			boolean aProfessionalStatus, boolean aPet, boolean aSmoker, Home aHome) {
 		
@@ -39,11 +44,4 @@ public class NoHome extends User implements Serializable{
 	public boolean hasHome() {
 		return false;
 	}
-
-
-
-
-	
-	
-
 }

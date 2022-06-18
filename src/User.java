@@ -3,6 +3,12 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/*
+ * User is the superclass of HaveHome and NoHome.
+ * It has all general attributes of a user and the method
+ * that matches 2 users.
+ */
+
 public abstract class User implements Serializable{
 	
 	protected String name, lastName, sex, email, password, phoneNum, language;
@@ -53,42 +59,40 @@ public abstract class User implements Serializable{
 		return name;
 	}
 
-
 	public String getLastName() {
 		return lastName;
 	}
-
 
 	public String getSex() {
 		return sex;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-
 	public String getLanguage() {
 		return language;
 	}
-
 
 	public boolean getProfessionalStatus() {
 		return professionalStatus;
 	}
 
-
 	public boolean isSmoker() {
 		return smoker;
 	}
 	
-	
+	/*
+	 * Goes through a users myLikes list and for each user in there,
+	 * checks the second-mentioned user's myLikes list for the first-
+	 * mentioned user and if he's found both users are added at each 
+	 * other's myMatches lists.
+	 */
 	
 	public void matching() {
 		for(int i=0; i<myLikes.size(); i++) {
@@ -113,7 +117,6 @@ public abstract class User implements Serializable{
 				        myLikes.get(i).getMyMatches().clear();
 				        myLikes.get(i).getMyMatches().addAll(set);
 				}
-				
 			}
 		}
 	}

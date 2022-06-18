@@ -17,6 +17,18 @@ import javax.swing.JTextPane;
 import javax.swing.JToggleButton;
 import javax.swing.UIManager;
 
+/*
+ * NoHomeProfileGUI is the graphic  interface that shows
+ * to a user that owns a house the information
+ * of a another user that he picked from the suggested
+ * roomates' list. If NoHomeProfileGUI is called from 
+ * MatchesGUI is also contains the contact information 
+ * of the user. If it's called from SearchingRoomateGUI
+ * the contact info is missing and there's a like button
+ * that if it's clicked the user shown gets added in the 
+ * searching user's myLikes list.
+ */
+
 public class NoHomeProfileGUI extends JFrame {
 
 	
@@ -147,6 +159,7 @@ public class NoHomeProfileGUI extends JFrame {
 		for(int i=0; i<searcher.myLikes.size(); i++) {
 			if(searcher.myLikes.get(i).getEmail().equals(possibleRoomate.getEmail())) {
 				tglbtnNewToggleButton.setSelected(true);
+				tglbtnNewToggleButton.setEnabled(false);
 			}
 				
 		}

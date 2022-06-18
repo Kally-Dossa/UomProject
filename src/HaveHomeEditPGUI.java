@@ -15,7 +15,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
-
+/*
+ * HaveHomeEditPGUI is the graphic interface where a user 
+ * that has a home can change his information as 
+ * he likes. The new information are updated at 
+ * the serial files used as "database".
+ */
 public class HaveHomeEditPGUI extends JFrame{
 	private HaveHome user;
 	private Registry registry;
@@ -139,7 +144,7 @@ public class HaveHomeEditPGUI extends JFrame{
 		
 		JRadioButton rdbtnFemale = new JRadioButton("Female");	
 		rdbtnFemale.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnFemale.setBounds(212, 299, 64, 23);
+		rdbtnFemale.setBounds(212, 299, 98, 23);
 		getContentPane().add(rdbtnFemale);
 		
 		JRadioButton rdbtnSmYes = new JRadioButton("Yes");	
@@ -320,9 +325,9 @@ public class HaveHomeEditPGUI extends JFrame{
 		lblHeating.setBounds(23, 578, 64, 20);
 		getContentPane().add(lblHeating);
 		
-		JLabel lblHPet = new JLabel("Pet:");
+		JLabel lblHPet = new JLabel("Pets Allowed:");
 		lblHPet.setBackground(SystemColor.textHighlight);
-		lblHPet.setBounds(23, 609, 48, 20);
+		lblHPet.setBounds(23, 609, 89, 20);
 		getContentPane().add(lblHPet);
 		
 		JLabel lblBedrooms = new JLabel("Bedrooms:");
@@ -377,7 +382,7 @@ public class HaveHomeEditPGUI extends JFrame{
 		
 		JRadioButton rdbtnNotAllowed = new JRadioButton("Not Allowed");
 		rdbtnNotAllowed.setBackground(UIManager.getColor("List.selectionBackground"));
-		rdbtnNotAllowed.setBounds(212, 608, 83, 23);
+		rdbtnNotAllowed.setBounds(212, 608, 98, 23);
 		getContentPane().add(rdbtnNotAllowed);
 		if(user.getHome().petAllowed()) {
 			rdbtnPetAllowed.setSelected(true);
@@ -444,7 +449,7 @@ public class HaveHomeEditPGUI extends JFrame{
 				JOptionPane.showMessageDialog(null, "Profile Editted Succesfully!");
 			}
 		});
-		btnEdit.setBounds(114, 718, 89, 23);
+		btnEdit.setBounds(104, 718, 110, 23);
 		getContentPane().add(btnEdit);
 		
 		JButton btnNewButton_1 = new JButton("<Back");

@@ -18,6 +18,19 @@ import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+/*
+ * MatchesGUI is the graphic interface where 
+ * a user can see all the other users he matched 
+ * with. When another user's profile GUI is called
+ * from this class the graphic interface of that user
+ * also contains his contact information so both users 
+ * can now communicate.(Except the show profile button
+ * that open's a profile GUI, there was also meant to be
+ * a remove button that would remove a user from the 
+ * matching list and from the user's myMatches
+ * list, but couldn't make it in time)
+ */
+
 public class MatchesGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -84,8 +97,6 @@ public class MatchesGUI extends JFrame {
 		
 		list.setModel(listModel);
 		scrollPane.setViewportView(list);
-		
-		
 		JButton btnNewButton = new JButton("Show Profile");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

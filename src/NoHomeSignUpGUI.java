@@ -17,6 +17,13 @@ import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/*
+ * NoHomeSignUpGUI is the graphic interface where the
+ * user fills his profile info when he signs up and then 
+ * he is added in the serial file the contains all the 
+ * users that own a house and are just looking for a roomate.
+ */
+
 public class NoHomeSignUpGUI extends JFrame {
 	private JTextField textFieldName;
 	private JTextField textFieldSurname;
@@ -34,8 +41,6 @@ public class NoHomeSignUpGUI extends JFrame {
 		getContentPane().setBackground(UIManager.getColor("List.selectionBackground"));
 		setBackground(new Color(0, 204, 255));
 		
-		
-			
 		this.setVisible(true);
 		this.setSize(314, 500);
 		this.setTitle("User details");
@@ -104,6 +109,30 @@ public class NoHomeSignUpGUI extends JFrame {
 		txtpnSmoker.setText("Smoker:");
 		txtpnSmoker.setBounds(10, 284, 49, 20);
 		getContentPane().add(txtpnSmoker);
+		
+
+		JTextPane txtpnPassword = new JTextPane();
+		txtpnPassword.setText("Password:");
+		txtpnPassword.setEditable(false);
+		txtpnPassword.setBackground(UIManager.getColor("List.selectionBackground"));
+		txtpnPassword.setBounds(10, 131, 70, 20);
+		getContentPane().add(txtpnPassword);
+		
+		JTextPane txtpnAge = new JTextPane();
+		txtpnAge.setText("Age:");
+		txtpnAge.setEditable(false);
+		txtpnAge.setBackground(UIManager.getColor("List.selectionBackground"));
+		txtpnAge.setBounds(10, 162, 30, 20);
+		getContentPane().add(txtpnAge);
+		
+		textFieldAge = new JTextField();
+		textFieldAge.setColumns(10);
+		textFieldAge.setBounds(109, 162, 106, 20);
+		getContentPane().add(textFieldAge);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(109, 131, 108, 20);
+		getContentPane().add(passwordField);
 		
 		textFieldName = new JTextField();
 		textFieldName.setBounds(109, 43, 106, 20);
@@ -182,7 +211,7 @@ public class NoHomeSignUpGUI extends JFrame {
 		rdbtnUnemployed.setBounds(196, 310, 113, 23);
 		getContentPane().add(rdbtnUnemployed);
 		
-		//All Radio Buttons Listeners
+		
 		rdbtnMale.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				rdbtnFemale.setEnabled(false);
@@ -255,7 +284,7 @@ public class NoHomeSignUpGUI extends JFrame {
 			}
 		});
 		
-		//Create Profile Button Listener
+		
 		JButton btnNewButton = new JButton("Create Profile");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -291,31 +320,9 @@ public class NoHomeSignUpGUI extends JFrame {
 				
 			}
 		}); 
-		btnNewButton.setBounds(91, 420, 106, 23);
+		btnNewButton.setBounds(92, 410, 124, 23);
 		getContentPane().add(btnNewButton);
 		
-		JTextPane txtpnPassword = new JTextPane();
-		txtpnPassword.setText("Password:");
-		txtpnPassword.setEditable(false);
-		txtpnPassword.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnPassword.setBounds(10, 131, 70, 20);
-		getContentPane().add(txtpnPassword);
-		
-		JTextPane txtpnAge = new JTextPane();
-		txtpnAge.setText("Age:");
-		txtpnAge.setEditable(false);
-		txtpnAge.setBackground(UIManager.getColor("List.selectionBackground"));
-		txtpnAge.setBounds(10, 162, 30, 20);
-		getContentPane().add(txtpnAge);
-		
-		textFieldAge = new JTextField();
-		textFieldAge.setColumns(10);
-		textFieldAge.setBounds(109, 162, 106, 20);
-		getContentPane().add(textFieldAge);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(109, 131, 108, 20);
-		getContentPane().add(passwordField);
 		
 		
 		
