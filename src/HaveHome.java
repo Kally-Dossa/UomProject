@@ -23,6 +23,7 @@ public class HaveHome extends User implements Serializable{
 		lastName = aLastName;
 		sex = aSex;
 		email = anEmail;
+		
 		password = pass;
 		phoneNum = aPhoneNum;
 		language = aLanguage;
